@@ -19,7 +19,21 @@ const ADMIN_TELEGRAM = "https://t.me/flowers0890";
 const usd = (n) => `$${Number(n).toLocaleString("en-US")}`;
 
 // How many products each category shows on the dashboard (/). /products shows all.
+// A category with more subcategories than this shows one product per subcategory.
 const HOME_PREVIEW = 4;
+
+// Pick products evenly across subcategories: one from each, then a second from each, and so on
+function spread(items, subs, limit) {
+  if (limit === Infinity || subs.length === 0) return items.slice(0, limit);
+  const buckets = subs.map((s) => items.filter((p) => p.sub === s.id));
+  const out = [];
+  for (let i = 0; out.length < limit && buckets.some((b) => i < b.length); i++) {
+    for (const b of buckets) {
+      if (i < b.length && out.length < limit) out.push(b[i]);
+    }
+  }
+  return out;
+}
 
 /* One product card.
    - With a balance (e.g. gift cards): shows Balance and Price, then the Add button.
@@ -107,7 +121,6 @@ export default function HomePage() {
 
   // Dashboard and /products (no category, no search): one section per category
   const grouped = !cat && !query;
-  const perSection = path === "/" ? HOME_PREVIEW : Infinity;
   const sections = CATEGORIES
     .map((c) => ({ cat: c, items: PRODUCTS.filter((p) => p.category === c.id) }))
     .filter((s) => s.items.length > 0);
@@ -224,25 +237,46 @@ export default function HomePage() {
             </header>
 
             <div className="dx-sections">
-              {sections.map(({ cat: c, items }) => (
-                <section key={c.id} className="dx-sec">
-                  <div className="dx-sec-head">
-                    <span className="dx-sec-ico"><CategoryIcon category={c} size={28} /></span>
-                    <div>
-                      <h3>{c.label}</h3>
-                      <small>{items.length} {items.length === 1 ? "item" : "items"}</small>
+              {sections.map(({ cat: c, items }) => {
+                const csubs = c.subcategories || [];
+                // home: at least one product from every subcategory; /products: everything
+                const limit = path === "/" ? Math.max(HOME_PREVIEW, csubs.length) : Infinity;
+                return (
+                  <section key={c.id} className="dx-sec">
+                    <div className="dx-sec-head">
+                      <span className="dx-sec-ico"><CategoryIcon category={c} size={28} /></span>
+                      <div>
+                        <h3>{c.label}</h3>
+                        <small>{items.length} {items.length === 1 ? "item" : "items"}</small>
+                      </div>
+                      <button type="button" className="dx-viewall" onClick={() => navigate(`/category/${c.id}`)}>
+                        View all <Icon name="arrow" size={14} />
+                      </button>
                     </div>
-                    <button type="button" className="dx-viewall" onClick={() => navigate(`/category/${c.id}`)}>
-                      View all <Icon name="arrow" size={14} />
-                    </button>
-                  </div>
-                  <div className="dx-grid">
-                    {items.slice(0, perSection).map((p) => (
-                      <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />
-                    ))}
-                  </div>
-                </section>
-              ))}
+
+                    {csubs.length > 0 && (
+                      <div className="dx-subchips">
+                        {csubs.map((s) => (
+                          <button
+                            key={s.id}
+                            type="button"
+                            className="dx-subchip"
+                            onClick={() => navigate(`/category/${c.id}?sub=${s.id}`)}
+                          >
+                            {s.label}<em>{items.filter((p) => p.sub === s.id).length}</em>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="dx-grid">
+                      {spread(items, csubs, limit).map((p) => (
+                        <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />
+                      ))}
+                    </div>
+                  </section>
+                );
+              })}
             </div>
           </>
         ) : (

@@ -828,3 +828,14 @@
   .dx-figs small { font-size: 10px; }
   .dx-figs b { font-size: 14px; }
 }
+
+/* =====================  Subcategory buttons inside each home section  =====================
+   Paste this at the very END of your stylesheet (after the category-sections block). */
+.dx-subchips { display: flex; gap: 8px; overflow-x: auto; margin-bottom: 12px; padding-bottom: 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.dx-subchips::-webkit-scrollbar { display: none; }
+.dx-subchip { flex: none; display: inline-flex; align-items: center; gap: 8px; height: 34px; padding: 0 14px; background: var(--field); border: 1px solid var(--line); border-radius: 99px; color: #d7dedb; font-size: 13px; font-weight: 600; white-space: nowrap; transition: border-color .2s, background .2s, color .2s; }
+.dx-subchip em { font-style: normal; font-size: 11px; color: var(--muted); background: rgba(255,255,255,.07); padding: 1px 7px; border-radius: 99px; }
+.dx-subchip:hover { border-color: rgba(74,222,128,.45); background: rgba(34,197,94,.08); color: #fff; }
+@media (hover: none) {
+  .dx-subchip:hover { border-color: var(--line); background: var(--field); color: #d7dedb; }
+}
