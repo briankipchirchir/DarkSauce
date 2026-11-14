@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Icon from "./Icon.jsx";
-import { ProductImage } from "./Media.jsx";
+import { ProductImage, CategoryIcon } from "./Media.jsx";
 import NotFound from "./NotFound.jsx";
 import { useStore } from "../store.jsx";
 import { ACCEPTED_COINS, CATEGORIES, PRODUCTS } from "../data.js";
@@ -17,6 +17,53 @@ const WHY = [
 const ADMIN_TELEGRAM = "https://t.me/flowers0890";
 
 const usd = (n) => `$${Number(n).toLocaleString("en-US")}`;
+
+// How many products each category shows on the dashboard (/). /products shows all.
+const HOME_PREVIEW = 4;
+
+/* One product card.
+   - With a balance (e.g. gift cards): shows Balance and Price, then the Add button.
+   - Without a balance: shows just the price next to the Add button. */
+function ProductCard({ p, flash, onAdd }) {
+  const pc = CATEGORIES.find((c) => c.id === p.category);
+  const hasBalance = p.balance != null;
+  const soldOut = p.stock === 0;
+
+  const button = (
+    <button onClick={() => onAdd(p.id)} disabled={soldOut} className={flash === p.id ? "ok" : ""}>
+      {soldOut ? "Sold out" : flash === p.id
+        ? <><Icon name="check" size={16} />Added</>
+        : <><Icon name="cart" size={16} />Add</>}
+    </button>
+  );
+
+  return (
+    <article className="dx-product">
+      <div className="dx-thumb">
+        <ProductImage product={p} category={pc} size={34} />
+        {p.badge && <i className="dx-ribbon">{p.badge}</i>}
+      </div>
+      <span className="dx-cat">{pc?.label}</span>
+      <h3>{p.name}</h3>
+      {p.description && <p className="dx-desc">{p.description}</p>}
+
+      {hasBalance ? (
+        <>
+          <div className="dx-figs">
+            <span><small>Balance</small><b className="bal">{usd(p.balance)}</b></span>
+            <span><small>Price</small><b>${p.price.toFixed(2)}</b></span>
+          </div>
+          <div className="dx-buy solo">{button}</div>
+        </>
+      ) : (
+        <div className="dx-buy">
+          <b>${p.price.toFixed(2)}</b>
+          {button}
+        </div>
+      )}
+    </article>
+  );
+}
 
 // Used for  /  (dashboard),  /products,  /category/:id  and  /category/:id?sub=<subcategory id>
 export default function HomePage() {
@@ -57,6 +104,13 @@ export default function HomePage() {
   const title = cat
     ? subObj ? `${cat.label}: ${subObj.label}` : cat.label
     : "Featured Products";
+
+  // Dashboard and /products (no category, no search): one section per category
+  const grouped = !cat && !query;
+  const perSection = path === "/" ? HOME_PREVIEW : Infinity;
+  const sections = CATEGORIES
+    .map((c) => ({ cat: c, items: PRODUCTS.filter((p) => p.category === c.id) }))
+    .filter((s) => s.items.length > 0);
 
   const browse = () => {
     if (path === "/products") productsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -159,6 +213,38 @@ export default function HomePage() {
               </button>
             </div>
           </>
+        ) : grouped ? (
+          <>
+            <header>
+              <div>
+                <span className="dx-eyebrow">Shop</span>
+                <h2>{path === "/" ? "Shop by category" : "All products"}</h2>
+              </div>
+              <span className="dx-count">{PRODUCTS.length} items</span>
+            </header>
+
+            <div className="dx-sections">
+              {sections.map(({ cat: c, items }) => (
+                <section key={c.id} className="dx-sec">
+                  <div className="dx-sec-head">
+                    <span className="dx-sec-ico"><CategoryIcon category={c} size={28} /></span>
+                    <div>
+                      <h3>{c.label}</h3>
+                      <small>{items.length} {items.length === 1 ? "item" : "items"}</small>
+                    </div>
+                    <button type="button" className="dx-viewall" onClick={() => navigate(`/category/${c.id}`)}>
+                      View all <Icon name="arrow" size={14} />
+                    </button>
+                  </div>
+                  <div className="dx-grid">
+                    {items.slice(0, perSection).map((p) => (
+                      <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </>
         ) : (
           <>
             <header>
@@ -168,8 +254,8 @@ export default function HomePage() {
                     <Icon name="arrow" size={14} />All {cat.label.toLowerCase()} types
                   </button>
                 )}
-                <span className="dx-eyebrow">Collection</span>
-                <h2>{title}</h2>
+                <span className="dx-eyebrow">{cat ? "Collection" : "Search"}</span>
+                <h2>{cat ? title : "Search results"}</h2>
               </div>
               <span className="dx-count">{visible.length} {visible.length === 1 ? "item" : "items"}</span>
             </header>
@@ -178,29 +264,7 @@ export default function HomePage() {
               <p className="dx-empty">No products match your search. Try a different word or pick another category.</p>
             ) : (
               <div className="dx-grid">
-                {visible.map((p) => {
-                  const pc = CATEGORIES.find((c) => c.id === p.category);
-                  return (
-                    <article key={p.id} className="dx-product">
-                      <div className="dx-thumb">
-                        <ProductImage product={p} category={pc} size={34} />
-                        {p.badge && <i className="dx-ribbon">{p.badge}</i>}
-                      </div>
-                      <span className="dx-cat">{pc?.label}</span>
-                      <h3>{p.name}</h3>
-                      {p.description && <p className="dx-desc">{p.description}</p>}
-                      {p.balance != null && (
-                        <p className="dx-bal"><Icon name="wallet" size={14} />Balance <b>{usd(p.balance)}</b></p>
-                      )}
-                      <div className="dx-buy">
-                        <b>${p.price.toFixed(2)}</b>
-                        <button onClick={() => addToCart(p.id)} disabled={p.stock === 0} className={flash === p.id ? "ok" : ""}>
-                          {p.stock === 0 ? "Sold out" : flash === p.id ? <><Icon name="check" size={16} />Added</> : <><Icon name="cart" size={16} />Add</>}
-                        </button>
-                      </div>
-                    </article>
-                  );
-                })}
+                {visible.map((p) => <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />)}
               </div>
             )}
           </>

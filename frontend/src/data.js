@@ -9,6 +9,10 @@
 //    public/images/coins/       coin logos          (svg or png)
 //  If a picture is missing, the shop shows a built-in icon instead, so you
 //  can add pictures a few at a time.
+//
+//  EVERY product gets its own picture automatically: just save it as
+//    public/images/products/<product id>.jpg      (1.jpg, 2.jpg ... 50.jpg)
+//  A product with its own  image: ...  keeps using that file instead.
 // ============================================================================
 
 const productImg = (file) => `/images/products/${file}`;
@@ -97,17 +101,21 @@ export const CATEGORIES = [
 //   category     one of the category ids above
 //   sub          one of that category's subcategory ids
 //   price        in USD
-//   image        picture path (optional)
+//   image        picture path. Default: public/images/products/<id>.jpg
 //   imageFit     "cover" fills the frame (photos), "contain" shows the whole
 //                picture (logos / transparent images). Default: "cover"
 //   description  one or two lines under the name (optional)
 //   stock        number in stock; 0 shows "Sold out" (default 50)
 //   badge        small label on the picture, e.g. "New" (optional)
-//   balance      optional. Shows "Balance $X" above the Add button, for
-//                prepaid items like gift cards. Example:  balance: 10000
+//   balance      optional. If set, the card shows BOTH "Balance $X" and
+//                "Price $Y" (for prepaid items like gift cards).
+//                If left out, the card shows only the price.
+//                Example:  balance: 100   (price 90, balance 100)
 // ---------------------------------------------------------------------------
 const P = (id, name, category, sub, price, extra = {}) => ({
-  id, name, category, sub, price, imageFit: "cover", stock: 50, ...extra,
+  id, name, category, sub, price,
+  image: productImg(`${id}.jpg`),
+  imageFit: "cover", stock: 50, ...extra,
 });
 
 export const PRODUCTS = [
@@ -131,20 +139,20 @@ export const PRODUCTS = [
   P(21, "Antivirus, 5 devices, 1 year",     "software", "antivirus", 39, { description: "Covers computers and phones.", badge: "Popular" }),
   P(22, "Antivirus, 10 devices, 1 year",    "software", "antivirus", 59, { description: "Protection for the whole household." }),
 
-  // ---- Gift cards / Shopping ----
+  // ---- Gift cards / Shopping (these have a balance, so they show Balance + Price) ----
   P(4,  "Shopping gift card $25",           "gift-cards", "shopping", 25,  { image: productImg("gift-25.png"),  description: "Delivered instantly after payment.", stock: 100, balance: 25 }),
   P(5,  "Shopping gift card $50",           "gift-cards", "shopping", 50,  { image: productImg("gift-50.png"),  description: "Delivered instantly after payment.", stock: 100, balance: 50 }),
   P(6,  "Shopping gift card $100",          "gift-cards", "shopping", 100, { image: productImg("gift-100.png"), description: "Delivered instantly after payment.", stock: 100, balance: 100 }),
 
   // ---- Gift cards / Gaming ----
-  P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gift-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
-  P(24, "Gaming gift card $50",             "gift-cards", "gaming", 50,  { image: productImg("gift-50.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 50 }),
-  P(25, "Gaming gift card $100",            "gift-cards", "gaming", 100, { image: productImg("gift-100.png"), description: "Credit for games and add-ons.", stock: 100, balance: 100 }),
+  P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gaming-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
+  P(24, "Gaming gift card $50",             "gift-cards", "gaming", 50,  { image: productImg("gaming-50.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 50 }),
+  P(25, "Gaming gift card $100",            "gift-cards", "gaming", 100, { image: productImg("gaming-100.png"), description: "Credit for games and add-ons.", stock: 100, balance: 100 }),
 
   // ---- Gift cards / Streaming ----
-  P(26, "Streaming gift card $15",          "gift-cards", "streaming", 15, { image: productImg("gift-25.png"),  description: "About one month of streaming.", stock: 100, balance: 15 }),
-  P(27, "Streaming gift card $30",          "gift-cards", "streaming", 30, { image: productImg("gift-50.png"),  description: "About two months of streaming.", stock: 100, balance: 30 }),
-  P(28, "Streaming gift card $60",          "gift-cards", "streaming", 60, { image: productImg("gift-100.png"), description: "About four months of streaming.", stock: 100, balance: 60 }),
+  P(26, "Streaming gift card $15",          "gift-cards", "streaming", 15, { image: productImg("streaming-15.png"), description: "About one month of streaming.", stock: 100, balance: 15 }),
+  P(27, "Streaming gift card $30",          "gift-cards", "streaming", 30, { image: productImg("streaming-30.png"), description: "About two months of streaming.", stock: 100, balance: 30 }),
+  P(28, "Streaming gift card $60",          "gift-cards", "streaming", 60, { image: productImg("streaming-60.png"), description: "About four months of streaming.", stock: 100, balance: 60 }),
 
   // ---- Guides / Network security ----
   P(7,  "Home network security guide",      "guides", "network", 12, { image: productImg("network-guide.jpg"), description: "Step-by-step guide to locking down your network.", stock: 999 }),
