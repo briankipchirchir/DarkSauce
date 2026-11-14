@@ -14,6 +14,9 @@ const WHY = [
   { icon: "bolt", label: "Instant" },
 ];
 
+// Your admin's Telegram username (without the @) or a t.me invite link
+const ADMIN_TELEGRAM = "https://t.me/flower";
+
 // Used for  /  (dashboard),  /products  and  /category/:id
 export default function HomePage() {
   const { add } = useStore();
@@ -64,7 +67,9 @@ export default function HomePage() {
           </p>
           <div className="dx-actions">
             <button className="dx-btn primary" onClick={browse}><Icon name="orders" size={18} />Browse Products</button>
-            <button className="dx-btn ghost"><Icon name="bell" size={18} />Contact Admin</button>
+            <a className="dx-btn ghost" href={ADMIN_TELEGRAM} target="_blank" rel="noopener noreferrer">
+  <Icon name="bell" size={18} />Contact Admin
+</a>
           </div>
         </div>
         <blockquote className="dx-quote">
