@@ -14,6 +14,12 @@ const ADDRESSES = {
   BTC: "bc1qaaswqgm0dtr0rl0evxjy562n5dta3vz0n98eml",
 };
 
+// Ready-made QR images (from your wallet), served from frontend/public/images.
+// Coins without an image fall back to a generated QR code.
+const QR_IMAGES = {
+  BTC: "/images/addressQrCode.png",
+};
+
 const OPTIONS = PAY_OPTIONS.filter((o) => ADDRESSES[o.id]);
 
 const TXID_RE = /^[0-9a-fA-F]{64}$/;
@@ -52,13 +58,13 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
   const locked = phase !== "pay";
 
   useEffect(() => {
-    if (!address) return;
+    if (!address || QR_IMAGES[optId]) return;
     let alive = true;
     QRCode.toDataURL(address, { margin: 1, width: 360, errorCorrectionLevel: "M" })
       .then((url) => { if (alive) setQr(url); })
       .catch(() => { if (alive) setQr(""); });
     return () => { alive = false; };
-  }, [address]);
+  }, [address, optId]);
 
   if (!opt) {
     return (
@@ -70,6 +76,8 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
       </section>
     );
   }
+
+  const qrSrc = QR_IMAGES[opt.id] || qr;
 
   const copy = async () => {
     const ok = await copyText(address);
@@ -191,7 +199,7 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
           </div>
 
           <div className="pay-qr">
-            {qr ? <img src={qr} alt={`QR code for the ${opt.symbol} deposit address`} /> : <span className="pay-qr-wait">…</span>}
+            {qrSrc ? <img src={qrSrc} alt={`QR code for the ${opt.symbol} deposit address`} /> : <span className="pay-qr-wait">…</span>}
           </div>
 
           <p className="pay-label">Deposit address</p>
