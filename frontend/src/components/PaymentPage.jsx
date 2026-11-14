@@ -1,14 +1,22 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import QRCode from "qrcode";
 import Icon from "./Icon.jsx";
 import { CoinLogo } from "./Media.jsx";
 import { useStore, money } from "../store.jsx";
+import { api } from "../api.js";
 import { PAY_OPTIONS, usePrices, toCrypto, fmtCrypto, fmtRate } from "../payments.js";
 
 const PRESETS = [25, 50, 100, 250];
 
-// Placeholder address. Replace with an address from your payment provider.
-const demoAddress = (opt) => `DEMO-${opt.id}-ADDRESS-NOT-A-REAL-WALLET`;
+// Your own receiving addresses, keyed by the coin id used in PAY_OPTIONS (src/data.js).
+// Only coins listed here are offered to users.
+const ADDRESSES = {
+  BTC: "bc1qaaswqgm0dtr0rl0evxjy562n5dta3vz0n98eml",
+};
+
+const OPTIONS = PAY_OPTIONS.filter((o) => ADDRESSES[o.id]);
+
+const TXID_RE = /^[0-9a-fA-F]{64}$/;
 
 const copyText = async (text) => {
   try { await navigator.clipboard.writeText(text); return true; } catch { /* try the fallback */ }
@@ -23,29 +31,25 @@ const copyText = async (text) => {
 };
 
 export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckout }) {
-  const { state, cartItems, deposit } = useStore();
+  const { cartItems } = useStore();
   const { prices, live } = usePrices();
 
   const [amount, setAmount] = useState(() =>
     String(presetAmount ? Math.min(10000, Math.max(5, Math.ceil(presetAmount))) : 50));
-  const [optId, setOptId] = useState(PAY_OPTIONS[0]?.id);
-  const [phase, setPhase] = useState("pay"); // pay | confirming | done
-  const [conf, setConf] = useState(0);
+  const [optId, setOptId] = useState(OPTIONS[0]?.id);
+  const [phase, setPhase] = useState("pay"); // pay | submitting | pending
+  const [txid, setTxid] = useState("");
   const [qr, setQr] = useState("");
   const [copied, setCopied] = useState(false);
   const [err, setErr] = useState("");
-  const [orderNo] = useState(() => Math.floor(100 + Math.random() * 900));
-  const timer = useRef(null);
 
-  const opt = PAY_OPTIONS.find((o) => o.id === optId) || PAY_OPTIONS[0];
-  const address = opt ? demoAddress(opt) : "";
+  const opt = OPTIONS.find((o) => o.id === optId) || OPTIONS[0];
+  const address = opt ? ADDRESSES[opt.id] : "";
   const num = Number(amount);
   const valid = num >= 5 && num <= 10000;
   const price = opt ? prices[opt.coingeckoId] : null;
   const crypto = valid && price ? fmtCrypto(toCrypto(num, price), opt) : "—";
   const locked = phase !== "pay";
-
-  useEffect(() => () => clearInterval(timer.current), []);
 
   useEffect(() => {
     if (!address) return;
@@ -61,7 +65,7 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
       <section className="dx-page">
         <div className="dx-panel dx-center">
           <h2>No payment methods enabled</h2>
-          <p className="dx-muted">Set <b>accepted: true</b> on at least one coin in src/data.js.</p>
+          <p className="dx-muted">Add a receiving address for at least one coin in ADDRESSES (PaymentPage.jsx).</p>
         </div>
       </section>
     );
@@ -73,28 +77,26 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
     if (ok) setTimeout(() => setCopied(false), 1500);
   };
 
-  const start = () => {
+  // The balance is never changed here. We only send the claim to the backend,
+  // and an admin approves it after checking the transaction on the blockchain.
+  const submit = async () => {
+    const id = txid.trim();
     if (!valid) { setErr("Enter an amount between $5 and $10,000."); return; }
+    if (!TXID_RE.test(id)) { setErr("Enter the 64-character transaction ID (txid) from your wallet."); return; }
     setErr("");
-    setPhase("confirming");
-    setConf(0);
-    const need = opt.confirmations;
-    const coin = opt.id;
-    const amt = num;
-    let c = 0;
-    timer.current = setInterval(() => {
-      c += 1;
-      setConf(c);
-      if (c >= need) {
-        clearInterval(timer.current);
-        // TODO: replace this simulation with your payment provider's confirmation webhook
-        deposit(amt, coin);
-        setPhase("done");
-      }
-    }, Math.max(250, Math.round(3600 / need)));
+    setPhase("submitting");
+    try {
+      await api("/api/payments/claims", {
+        method: "POST",
+        body: { coin: opt.id, amountUsd: num, txid: id },
+      });
+      setPhase("pending");
+    } catch (e) {
+      setErr(e?.message || "Could not submit your payment. Please try again.");
+      setPhase("pay");
+    }
   };
 
-  const pct = phase === "done" ? 100 : (conf / opt.confirmations) * 100;
   const rate = price ? (opt.stable ? `1 ${opt.symbol} ≈ ${fmtRate(price)}` : `1 ${opt.symbol} = ${fmtRate(price)}`) : "";
 
   return (
@@ -103,13 +105,13 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
         <span className="pay-tile"><Icon name="wallet" size={22} /></span>
         <div>
           <h1>Complete payment</h1>
-          <p>Secure cryptocurrency deposit gateway</p>
+          <p>Cryptocurrency deposit</p>
         </div>
       </header>
 
       <p className="dx-warn pay-demo">
-        Demo mode: the address below is a placeholder and no real payment is taken. The button at the bottom simulates
-        the confirmations and credits your balance so you can test the full flow.
+        Send the exact amount to the address below, then paste your transaction ID and submit. Your balance is
+        credited after we confirm the payment on the blockchain.
       </p>
 
       <div className="pay-grid">
@@ -119,7 +121,7 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
             <div className="pay-row">
               <div>
                 <div className="pay-money">{money(valid ? num : 0)}</div>
-                <p className="pay-sub">Order #{orderNo}</p>
+                <p className="pay-sub">Balance top up</p>
               </div>
               <span className="pay-badge">Top up</span>
             </div>
@@ -156,9 +158,9 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
           </div>
 
           <div className="pay-card">
-            <p className="pay-label">Select cryptocurrency ({PAY_OPTIONS.length} available)</p>
+            <p className="pay-label">Select cryptocurrency ({OPTIONS.length} available)</p>
             <div className="pay-coins" role="radiogroup" aria-label="Cryptocurrency">
-              {PAY_OPTIONS.map((o) => (
+              {OPTIONS.map((o) => (
                 <button
                   key={o.id}
                   type="button"
@@ -208,33 +210,46 @@ export default function PaymentPage({ presetAmount, onBack, onAccount, onCheckou
           <p className="pay-warn"><Icon name="alert" size={16} />Send exact amount only • {opt.confirmations} confirmations required</p>
 
           <div className="pay-steps">
-            <div className={`pay-step ${phase === "pay" ? "on" : "done"}`}>
+            <div className={`pay-step ${phase === "pay" || phase === "submitting" ? "on" : "done"}`}>
               <i><Icon name="wallet" size={18} /></i><b>Send</b><small>Send crypto</small>
             </div>
-            <div className={`pay-step ${phase === "confirming" ? "on" : phase === "done" ? "done" : ""}`}>
-              <i><Icon name="shield" size={18} /></i><b>Confirm</b>
-              <small>{phase === "confirming" ? `${conf}/${opt.confirmations} blocks` : `${opt.confirmations} blocks`}</small>
+            <div className={`pay-step ${phase === "pending" ? "on" : ""}`}>
+              <i><Icon name="shield" size={18} /></i><b>Review</b>
+              <small>{phase === "pending" ? "In review" : "We verify"}</small>
             </div>
-            <div className={`pay-step ${phase === "done" ? "done" : ""}`}>
-              <i><Icon name="check" size={18} /></i><b>Credit</b><small>{phase === "done" ? "Added" : "Auto added"}</small>
+            <div className="pay-step">
+              <i><Icon name="check" size={18} /></i><b>Credit</b><small>Added after review</small>
             </div>
           </div>
 
-          {phase === "pay" && (
-            <button className="dx-btn primary dx-wide" onClick={start}>I have sent the payment</button>
-          )}
-
-          {phase === "confirming" && (
+          {(phase === "pay" || phase === "submitting") && (
             <>
-              <div className="pay-bar" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(pct)}><i style={{ width: `${pct}%` }} /></div>
-              <button className="dx-btn primary dx-wide" disabled>Waiting for confirmations… {conf}/{opt.confirmations}</button>
+              <p className="pay-label">Transaction ID (txid)</p>
+              <div className="pay-addr">
+                <input
+                  aria-label="Transaction ID"
+                  placeholder="Paste the 64-character transaction ID"
+                  value={txid}
+                  disabled={locked}
+                  spellCheck={false}
+                  autoComplete="off"
+                  onChange={(e) => setTxid(e.target.value.replace(/\s/g, ""))}
+                  style={{ width: "100%" }}
+                />
+              </div>
+              <button className="dx-btn primary dx-wide" onClick={submit} disabled={phase === "submitting"}>
+                {phase === "submitting" ? "Submitting…" : "I have sent the payment"}
+              </button>
             </>
           )}
 
-          {phase === "done" && (
+          {phase === "pending" && (
             <div className="pay-done" role="status">
               <div className="dx-done"><Icon name="check" size={28} /></div>
-              <p><b>Payment confirmed.</b> {money(num)} was added to your balance. New balance: <b>{money(state.balance)}</b></p>
+              <p>
+                <b>Payment submitted.</b> We are verifying your {money(num)} transaction. Your balance will be
+                updated once it has {opt.confirmations} confirmations and has been approved.
+              </p>
               <div className="dx-actions" style={{ justifyContent: "center" }}>
                 {cartItems.length > 0 && <button className="dx-btn primary" onClick={onCheckout}>Back to checkout</button>}
                 <button className={`dx-btn ${cartItems.length ? "ghost" : "primary"}`} onClick={onBack}>Continue shopping</button>
