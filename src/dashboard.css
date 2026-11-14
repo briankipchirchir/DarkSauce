@@ -582,3 +582,81 @@
   .pay-money { font-size: 24px; }
   .pay-qr { width: 120px; }
 }
+
+
+/* =====================  Compact sizing: home / products  =====================
+   Keep this block at the END of the file so it overrides the earlier rules.   */
+
+/* page rhythm */
+.dx-main { gap: clamp(14px, 2vw, 22px); padding: clamp(14px, 2.4vw, 28px); }
+
+/* buttons (site-wide) */
+.dx-btn { height: 42px; padding: 0 16px; gap: 8px; border-radius: 12px; font-size: 14px; }
+
+/* hero */
+.dx-hero { gap: 20px; padding: clamp(18px, 3vw, 30px); border-radius: 22px; }
+.dx-chip { padding: 4px 12px; font-size: 11px; }
+.dx-hero h1 { margin: 12px 0 8px; font-size: clamp(26px, 4vw, 38px); }
+.dx-hero p { margin: 0 0 16px; font-size: clamp(14px, 1.4vw, 15px); line-height: 1.55; }
+.dx-quote { padding: 18px 16px; border-radius: 16px; gap: 6px; }
+.dx-quote strong { font-size: clamp(15px, 1.6vw, 18px); }
+.dx-quote span { font-size: 13px; }
+
+/* info cards */
+.dx-info { gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); }
+.dx-info article { padding: 18px; border-radius: 18px; }
+.dx-ico { width: 42px; height: 42px; margin-bottom: 12px; border-radius: 12px; }
+.dx-info h3 { margin: 0 0 6px; font-size: 16px; }
+.dx-info p { margin: 0 0 12px; font-size: 14px; line-height: 1.5; }
+.dx-tags { gap: 6px; }
+.dx-tags b { padding: 3px 9px; font-size: 11px; border-radius: 6px; }
+.dx-steps { gap: 10px; margin-bottom: 12px; font-size: 14px; }
+.dx-steps i { width: 22px; height: 22px; font-size: 12px; }
+.dx-link { font-size: 14px; }
+.dx-badges { gap: 8px; }
+.dx-badges span { padding: 6px 10px; border-radius: 8px; font-size: 13px; gap: 6px; }
+
+/* products */
+.dx-products > header { margin-bottom: 14px; }
+.dx-products h2 { font-size: clamp(20px, 2.4vw, 26px); }
+.dx-count { padding: 4px 12px; font-size: 12px; }
+.dx-grid { grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 12px; }
+.dx-product { gap: 6px; padding: 10px; border-radius: 16px; }
+.dx-thumb { aspect-ratio: 16 / 9; border-radius: 12px; }
+.dx-cat { margin-top: 2px; font-size: 11px; }
+.dx-product h3 { min-height: 2.6em; font-size: 14px; }
+.dx-desc { font-size: 12px; }
+.dx-buy { padding-top: 4px; }
+.dx-buy b { font-size: 16px; }
+.dx-buy button { height: 32px; padding: 0 10px; gap: 5px; border-radius: 8px; font-size: 13px; }
+.dx-ribbon { top: 6px; left: 6px; padding: 2px 8px; font-size: 10px; }
+
+/* footer notes + category strip */
+.dx-notes { gap: 10px 28px; padding: 18px 0 6px; font-size: 13px; }
+.dx-cchip { min-height: 40px; padding: 0 14px; border-radius: 12px; font-size: 14px; }
+
+/* phones */
+@media (max-width: 560px) {
+  .dx-main { gap: 12px; padding: 12px max(12px, env(safe-area-inset-right)) 14px max(12px, env(safe-area-inset-left)); }
+
+  /* hero buttons side by side instead of stacked */
+  .dx-hero { gap: 14px; padding: 16px 14px; border-radius: 18px; }
+  .dx-hero h1 { margin: 10px 0 6px; font-size: 26px; }
+  .dx-hero p { margin-bottom: 14px; font-size: 14px; }
+  .dx-actions { gap: 8px; }
+  .dx-actions .dx-btn { flex: 1 1 calc(50% - 4px); justify-content: center; padding: 0 10px; font-size: 13px; }
+  .dx-quote { padding: 14px 12px; }
+
+  .dx-info { gap: 10px; }
+  .dx-info article { padding: 14px; border-radius: 16px; }
+  .dx-ico { width: 38px; height: 38px; margin-bottom: 8px; }
+  .dx-info p { margin-bottom: 10px; font-size: 13px; }
+
+  /* products: two compact columns, price and button on one row */
+  .dx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .dx-product { padding: 8px; border-radius: 14px; }
+  .dx-product h3 { min-height: 0; font-size: 13px; }
+  .dx-buy { flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .dx-buy b { font-size: 15px; }
+  .dx-buy button { width: auto; height: 30px; padding: 0 9px; font-size: 12px; }
+}
