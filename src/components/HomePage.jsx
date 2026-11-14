@@ -6,6 +6,14 @@ import NotFound from "./NotFound.jsx";
 import { useStore } from "../store.jsx";
 import { ACCEPTED_COINS, CATEGORIES, PRODUCTS } from "../data.js";
 
+
+const WHY = [
+  { icon: "trophy", label: "Top Tier" },
+  { icon: "refresh", label: "Fresh Stock" },
+  { icon: "lock", label: "Secure" },
+  { icon: "bolt", label: "Instant" },
+];
+
 // Used for  /  (dashboard),  /products  and  /category/:id
 export default function HomePage() {
   const { add } = useStore();
@@ -80,16 +88,21 @@ export default function HomePage() {
           </ol>
           <button className="dx-link" onClick={browse}>View Products <Icon name="arrow" size={16} /></button>
         </article>
-        <article>
-          <span className="dx-ico"><Icon name="bolt" /></span>
-          <h3>Why DARKSAUCE?</h3>
-          <div className="dx-badges">
-            <span><Icon name="trophy" size={16} />Top Tier</span>
-            <span><Icon name="refresh" size={16} />Fresh Stock</span>
-            <span><Icon name="lock" size={16} />Secure</span>
-            <span><Icon name="bolt" size={16} />Instant</span>
-          </div>
-        </article>
+      <article className="dx-why">
+  <span className="dx-ico"><Icon name="bolt" /></span>
+  <h3>Why DARKSAUCE?</h3>
+  <div className="dx-marquee" aria-label="Top tier, fresh stock, secure, instant">
+    <div className="dx-marquee-track">
+      {[0, 1].map((n) => (
+        <div className="dx-marquee-set" key={n} aria-hidden={n === 1}>
+          {WHY.map((w) => (
+            <span key={w.label}><Icon name={w.icon} size={16} />{w.label}</span>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+</article>
       </section>
 
       <section className="dx-products" ref={productsRef}>

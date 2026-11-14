@@ -660,3 +660,32 @@
   .dx-buy b { font-size: 15px; }
   .dx-buy button { width: auto; height: 30px; padding: 0 9px; font-size: 12px; }
 }
+
+
+/* =====================  "Why DARKSAUCE?" slim sliding strip  ===================== */
+/* full-width slim strip instead of a tall card */
+.dx-info .dx-why { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-radius: 16px; }
+.dx-info .dx-why .dx-ico { flex: none; width: 34px; height: 34px; margin: 0; border-radius: 10px; }
+.dx-info .dx-why h3 { flex: none; margin: 0; font-size: 15px; white-space: nowrap; }
+
+/* the sliding line (right to left, seamless loop) */
+.dx-marquee { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
+.dx-marquee-track { display: flex; width: max-content; animation: dxmarq 16s linear infinite; will-change: transform; }
+.dx-marquee:hover .dx-marquee-track { animation-play-state: paused; }
+.dx-marquee-set { display: flex; flex: none; gap: 8px; padding-right: 8px; }
+.dx-marquee-set span { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.03); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.dx-marquee-set svg { color: var(--green); }
+@keyframes dxmarq { to { transform: translateX(-50%); } }
+
+@media (max-width: 560px) {
+  .dx-info .dx-why { flex-wrap: wrap; gap: 8px 10px; padding: 10px 12px; }
+  .dx-info .dx-why .dx-ico { width: 30px; height: 30px; }
+  .dx-marquee { flex: 1 1 100%; }
+}
+
+/* reduced motion: stop the slide, let people scroll the line by hand */
+@media (prefers-reduced-motion: reduce) {
+  .dx-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .dx-marquee-track { animation: none !important; }
+  .dx-marquee-set[aria-hidden="true"] { display: none; }
+}
