@@ -381,3 +381,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 @media (hover: none) {
   .primary:hover::after { transform: translateX(-120%); }
 }
+
+/* ---------- Auth additions (phase 2) ---------- */
+.auth-err {
+  margin: 0 0 16px; padding: 12px 14px;
+  border: 1px solid rgba(248, 113, 113, .4); border-radius: 12px;
+  background: rgba(248, 113, 113, .08);
+  color: var(--danger); font-size: 14px;
+}
+.auth-hint { margin: 8px 2px 0; font-size: 12px; color: var(--muted); }
+.as-btn { background: none; border: 0; padding: 0; font: inherit; cursor: pointer; }

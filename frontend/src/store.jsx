@@ -70,14 +70,15 @@ function reducer(s, a) {
       };
       return { ...s, balance: round2(s.balance - total), cart: {}, orders: [order, ...s.orders] };
     }
-    case "rename":
-      return { ...s, profile: { ...s.profile, username: a.username } };
     default:
       return s;
   }
 }
 
-export function StoreProvider({ email, children }) {
+// Phase 2: the profile (email + display name) now comes from the server session.
+// Cart, balance, orders and deposits are still local demo data until phases 3 and 4.
+export function StoreProvider({ user, children }) {
+  const email = user.email;
   const [state, dispatch] = useReducer(reducer, email, load);
 
   useEffect(() => {
@@ -89,7 +90,8 @@ export function StoreProvider({ email, children }) {
     const cartTotal = sum(cartItems);
     const cartCount = cartItems.reduce((n, i) => n + i.qty, 0);
     return {
-      state, cartItems, cartTotal, cartCount,
+      state: { ...state, profile: { email: user.email, username: user.displayName } },
+      cartItems, cartTotal, cartCount,
       add: (id) => dispatch({ type: "add", id }),
       setQty: (id, qty) => dispatch({ type: "setQty", id, qty }),
       deposit: (amount, coin) =>
@@ -100,9 +102,8 @@ export function StoreProvider({ email, children }) {
         dispatch({ type: "checkout", id, date: Date.now() });
         return id;
       },
-      rename: (username) => dispatch({ type: "rename", username }),
     };
-  }, [state]);
+  }, [state, user.email, user.displayName]);
 
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

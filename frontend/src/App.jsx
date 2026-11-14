@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import MatrixBackground from "./components/MatrixBackground.jsx";
 import DriftingIcons from "./components/DriftingIcons.jsx";
@@ -8,29 +7,23 @@ import HomePage from "./components/HomePage.jsx";
 import NotFound from "./components/NotFound.jsx";
 import { CartRoute, CheckoutRoute, OrdersRoute, AccountRoute, PayRoute } from "./components/pages.jsx";
 import { StoreProvider } from "./store.jsx";
-
-const KEY = "darksauce:user";
-const read = () => {
-  try { const v = sessionStorage.getItem(KEY); return v && v.includes("@") ? v : null; } catch { return null; }
-};
+import { useAuth } from "./auth.jsx";
 
 export default function App() {
-  const [email, setEmail] = useState(read);
+  const { status, user, login, register, logout } = useAuth();
 
-  const login = (value) => {
-    const v = value.trim().toLowerCase();
-    try { sessionStorage.setItem(KEY, v); } catch {}
-    setEmail(v);
-  };
-
-  const logout = () => {
-    try { sessionStorage.removeItem(KEY); } catch {}
-    setEmail(null);
-  };
-
-  if (email) {
+  // Checking whether an existing session can be resumed
+  if (status === "loading") {
     return (
-      <StoreProvider email={email}>
+      <main className="stage">
+        <span className="spinner" role="status" aria-label="Loading" />
+      </main>
+    );
+  }
+
+  if (user) {
+    return (
+      <StoreProvider user={user}>
         <Routes>
           <Route element={<Shell onLogout={logout} />}>
             <Route index element={<HomePage />} />
@@ -49,14 +42,14 @@ export default function App() {
     );
   }
 
-  // Not signed in: show the login page. After signing in you land on the page you asked for.
+  // Not signed in: every URL shows the login page. After signing in you land on the page you asked for.
   return (
     <main className="stage">
       <MatrixBackground />
       <div className="coin" aria-hidden="true">₿</div>
       <DriftingIcons />
       <div className="vignette" aria-hidden="true" />
-      <LoginCard onLogin={login} />
+      <LoginCard onLogin={login} onRegister={register} />
     </main>
   );
 }

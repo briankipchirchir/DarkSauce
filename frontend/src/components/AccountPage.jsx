@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useStore, money, fmtDate } from "../store.jsx";
+import { useAuth } from "../auth.jsx";
 
 export default function AccountPage({ onTopUp, onOrders }) {
-  const { state, rename } = useStore();
+  const { state } = useStore();
+  const { updateProfile, changePassword } = useAuth();
   const { profile, balance, orders, deposits } = state;
   const spent = orders.reduce((t, o) => t + o.total, 0);
 
@@ -11,22 +13,32 @@ export default function AccountPage({ onTopUp, onOrders }) {
   const [pw, setPw] = useState({ current: "", next: "", again: "" });
   const [pwMsg, setPwMsg] = useState(null);
 
-  const saveName = (e) => {
+  const saveName = async (e) => {
     e.preventDefault();
     const v = name.trim();
     if (v.length < 2 || v.length > 24) return setNameMsg({ ok: false, text: "Use 2 to 24 characters." });
-    rename(v);
-    setNameMsg({ ok: true, text: "Display name updated." });
+    try {
+      await updateProfile(v);
+      setName(v);
+      setNameMsg({ ok: true, text: "Display name updated." });
+    } catch (err) {
+      setNameMsg({ ok: false, text: err.message });
+    }
   };
 
-  const savePw = (e) => {
+  const savePw = async (e) => {
     e.preventDefault();
     if (!pw.current) return setPwMsg({ ok: false, text: "Enter your current password." });
     if (pw.next.length < 8) return setPwMsg({ ok: false, text: "New password must be at least 8 characters." });
+    if (pw.next.length > 72) return setPwMsg({ ok: false, text: "New password can be at most 72 characters." });
     if (pw.next !== pw.again) return setPwMsg({ ok: false, text: "The new passwords don't match." });
-    // TODO: send to your backend
-    setPw({ current: "", next: "", again: "" });
-    setPwMsg({ ok: true, text: "Checks passed. Saving will work once your backend is connected." });
+    try {
+      await changePassword(pw.current, pw.next);
+      setPw({ current: "", next: "", again: "" });
+      setPwMsg({ ok: true, text: "Password updated. Your other devices were signed out." });
+    } catch (err) {
+      setPwMsg({ ok: false, text: err.message });
+    }
   };
 
   const setP = (k) => (e) => setPw((p) => ({ ...p, [k]: e.target.value }));

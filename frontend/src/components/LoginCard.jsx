@@ -24,11 +24,14 @@ const icons = {
 
 const emailOk = (v) => /^\S+@\S+\.\S+$/.test(v);
 
-export default function LoginCard({ onLogin }) {
-  const [form, setForm] = useState({ email: "", password: "", remember: false });
+export default function LoginCard({ onLogin, onRegister }) {
+  const [mode, setMode] = useState("login"); // login | register
+  const [form, setForm] = useState({ email: "", displayName: "", password: "", remember: false });
   const [show, setShow] = useState(false);
   const [errors, setErrors] = useState({});
+  const [formError, setFormError] = useState("");
   const [loading, setLoading] = useState(false);
+  const isReg = mode === "register";
 
   const set = (k) => (e) => {
     const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
@@ -36,19 +39,36 @@ export default function LoginCard({ onLogin }) {
     if (errors[k]) setErrors((x) => ({ ...x, [k]: undefined }));
   };
 
+  const switchMode = () => {
+    setMode(isReg ? "login" : "register");
+    setErrors({});
+    setFormError("");
+    setForm((f) => ({ ...f, password: "" }));
+  };
+
   const submit = async (e) => {
     e.preventDefault();
     const next = {};
     if (!emailOk(form.email)) next.email = "Enter a valid email address.";
+    if (isReg) {
+      const n = form.displayName.trim();
+      if (n.length < 2 || n.length > 24) next.displayName = "Use 2 to 24 characters.";
+    }
     if (form.password.length < 8) next.password = "Password must be at least 8 characters.";
+    else if (form.password.length > 72) next.password = "Password can be at most 72 characters.";
     setErrors(next);
+    setFormError("");
     if (Object.keys(next).length) return;
 
     setLoading(true);
     try {
-      // TODO: replace with your real auth call
-      await new Promise((r) => setTimeout(r, 900));
-      onLogin?.(form.email);
+      if (isReg) {
+        await onRegister({ email: form.email.trim(), password: form.password, displayName: form.displayName.trim() });
+      } else {
+        await onLogin({ email: form.email.trim(), password: form.password, remember: form.remember });
+      }
+    } catch (err) {
+      setFormError(err?.message || "Something went wrong. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -60,7 +80,7 @@ export default function LoginCard({ onLogin }) {
         <Logo />
         <h1 id="brand">DARKSAUCE</h1>
         <span className="rule" aria-hidden="true" />
-        <p>Secure client login</p>
+        <p>{isReg ? "Create your account" : "Secure client login"}</p>
       </header>
 
       <form onSubmit={submit} noValidate>
@@ -78,12 +98,28 @@ export default function LoginCard({ onLogin }) {
           {errors.email && <p className="err" id="email-err" role="alert">{errors.email}</p>}
         </div>
 
+        {isReg && (
+          <div className="field">
+            <label htmlFor="displayName">Display name</label>
+            <div className={`control ${errors.displayName ? "invalid" : ""}`}>
+              <span className="ico">{icons.user}</span>
+              <input
+                id="displayName" type="text" autoComplete="nickname" maxLength={24}
+                placeholder="How should we call you?"
+                value={form.displayName} onChange={set("displayName")}
+                aria-invalid={!!errors.displayName} aria-describedby={errors.displayName ? "dn-err" : undefined}
+              />
+            </div>
+            {errors.displayName && <p className="err" id="dn-err" role="alert">{errors.displayName}</p>}
+          </div>
+        )}
+
         <div className="field">
           <label htmlFor="password">Password</label>
           <div className={`control ${errors.password ? "invalid" : ""}`}>
             <span className="ico">{icons.lock}</span>
             <input
-              id="password" type={show ? "text" : "password"} autoComplete="current-password"
+              id="password" type={show ? "text" : "password"} autoComplete={isReg ? "new-password" : "current-password"}
               placeholder="••••••••"
               value={form.password} onChange={set("password")}
               aria-invalid={!!errors.password} aria-describedby={errors.password ? "pw-err" : undefined}
@@ -94,26 +130,33 @@ export default function LoginCard({ onLogin }) {
             </button>
           </div>
           {errors.password && <p className="err" id="pw-err" role="alert">{errors.password}</p>}
+          {isReg && !errors.password && <p className="auth-hint">8 to 72 characters.</p>}
         </div>
 
-        <div className="row">
-          <label className="check">
-            <input type="checkbox" checked={form.remember} onChange={set("remember")} />
-            <span className="box" aria-hidden="true" />
-            Remember me
-          </label>
-          <a href="#forgot" className="muted-link">Forgot password?</a>
-        </div>
+        {formError && <p className="auth-err" role="alert">{formError}</p>}
+
+        {!isReg && (
+          <div className="row">
+            <label className="check">
+              <input type="checkbox" checked={form.remember} onChange={set("remember")} />
+              <span className="box" aria-hidden="true" />
+              Remember me
+            </label>
+            <a href="#forgot" className="muted-link">Forgot password?</a>
+          </div>
+        )}
 
         <button className="primary" type="submit" disabled={loading}>
           {loading ? <span className="spinner" aria-hidden="true" /> : icons.signIn}
-          <span>{loading ? "Signing in" : "Sign in"}</span>
+          <span>{loading ? (isReg ? "Creating account" : "Signing in") : (isReg ? "Create account" : "Sign in")}</span>
         </button>
       </form>
 
       <footer className="foot">
-        <span>Don't have an account?</span>
-        <a href="#register" className="accent-link">Create account {icons.arrow}</a>
+        <span>{isReg ? "Already have an account?" : "Don't have an account?"}</span>
+        <button type="button" className="accent-link as-btn" onClick={switchMode}>
+          {isReg ? "Sign in" : "Create account"} {icons.arrow}
+        </button>
       </footer>
     </section>
   );
