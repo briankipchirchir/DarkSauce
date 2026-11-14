@@ -10,29 +10,35 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.header.writers.ReferrerPolicyHeaderWriter;
 import org.springframework.security.web.header.writers.StaticHeadersWriter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import com.darksauce.market.auth.JwtAuthFilter;
+import com.darksauce.market.auth.JwtService;
+
 /**
- * Phase 1 baseline: stateless API, CORS limited to the frontend origin, security headers,
- * only /api/health is public. JWT filter and role rules are added in phase 2.
+ * Stateless API: bearer access token (15 min) + refresh cookie scoped to /api/auth.
+ * CORS limited to the frontend origin. Only health and the auth entry points are public.
  */
 @Configuration
 public class SecurityConfig {
 
     @Bean
-    SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    SecurityFilterChain filterChain(HttpSecurity http, JwtService jwt) throws Exception {
         http
             .cors(Customizer.withDefaults())
-            // Stateless bearer-token API (no session cookie). The refresh-cookie endpoint gets
-            // its own protection in phase 2.
+            // No session cookie authenticates requests (bearer token only). The refresh cookie is
+            // SameSite=Strict, path-scoped, and its endpoints also require X-Requested-With.
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .httpBasic(AbstractHttpConfigurer::disable)
@@ -48,9 +54,13 @@ public class SecurityConfig {
                 headers.addHeaderWriter(new StaticHeadersWriter(
                     "Permissions-Policy", "geolocation=(), camera=(), microphone=()"));
             })
+            .addFilterBefore(new JwtAuthFilter(jwt), UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(a -> a
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/api/health").permitAll()
+                .requestMatchers(HttpMethod.POST,
+                    "/api/auth/register", "/api/auth/login", "/api/auth/refresh", "/api/auth/logout").permitAll()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated());
         return http.build();
     }
@@ -60,7 +70,7 @@ public class SecurityConfig {
         CorsConfiguration cfg = new CorsConfiguration();
         cfg.setAllowedOrigins(List.of(props.frontendOrigin()));
         cfg.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
-        cfg.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept"));
+        cfg.setAllowedHeaders(List.of("Authorization", "Content-Type", "Accept", "X-Requested-With"));
         cfg.setAllowCredentials(true);
         cfg.setMaxAge(3600L);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -71,5 +81,13 @@ public class SecurityConfig {
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(12);
+    }
+
+    /** We authenticate with our own JWT filter; this stops Spring creating a default user and password. */
+    @Bean
+    UserDetailsService noInMemoryUsers() {
+        return username -> {
+            throw new UsernameNotFoundException("not used");
+        };
     }
 }
