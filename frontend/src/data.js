@@ -1,6 +1,7 @@
 // ============================================================================
 //  DARKSAUCE catalogue
-//  Everything the shop shows (coins, categories, products) lives in this file.
+//  Everything the shop shows (coins, categories, subcategories, products)
+//  lives in this file.
 //
 //  Pictures: put the files in  public/images/...  and use the path below.
 //    public/images/products/    product photos      (jpg, png, webp, svg)
@@ -33,45 +34,163 @@ export const COINS = [
 export const ACCEPTED_COINS = COINS.filter((c) => c.accepted);
 
 // ---------------------------------------------------------------------------
-//  CATEGORIES
-//   id     used by products below (category: "software")
-//   label  shown to customers
-//   image  picture path (optional)
-//   icon   built-in fallback: code, gift, book, chip, tool, layers, shield,
-//          lock, bolt, trophy, refresh, orders, wallet, coin, dollar
+//  CATEGORIES (each has subcategories that customers pick before the products)
+//   id             used by products below (category: "software")
+//   label          shown to customers
+//   image          picture path (optional)
+//   icon           built-in fallback: code, gift, book, chip, tool, layers,
+//                  shield, lock, bolt, trophy, refresh, orders, wallet, coin, dollar
+//   subcategories  [{ id, label, icon }]  products point at these with  sub: "id"
+//                  (a category with no subcategories goes straight to products)
 // ---------------------------------------------------------------------------
 export const CATEGORIES = [
-  { id: "software",   label: "Software",   icon: "code", image: categoryImg("software.svg") },
-  { id: "gift-cards", label: "Gift cards", icon: "gift", image: categoryImg("gift-cards.svg") },
-  { id: "guides",     label: "Guides",     icon: "book", image: categoryImg("guides.svg") },
-  { id: "hardware",   label: "Hardware",   icon: "chip", image: categoryImg("hardware.svg") },
-  { id: "services",   label: "Services",   icon: "tool", image: categoryImg("services.svg") },
+  {
+    id: "software", label: "Software", icon: "code", image: categoryImg("software.svg"),
+    subcategories: [
+      { id: "password-managers", label: "Password managers", icon: "lock" },
+      { id: "vpn",               label: "VPN",               icon: "shield" },
+      { id: "backup",            label: "Backup and storage", icon: "refresh" },
+      { id: "antivirus",         label: "Antivirus",         icon: "bolt" },
+    ],
+  },
+  {
+    id: "gift-cards", label: "Gift cards", icon: "gift", image: categoryImg("gift-cards.svg"),
+    subcategories: [
+      { id: "shopping",  label: "Shopping",  icon: "orders" },
+      { id: "gaming",    label: "Gaming",    icon: "bolt" },
+      { id: "streaming", label: "Streaming", icon: "trophy" },
+    ],
+  },
+  {
+    id: "guides", label: "Guides", icon: "book", image: categoryImg("guides.svg"),
+    subcategories: [
+      { id: "network",  label: "Network security", icon: "shield" },
+      { id: "privacy",  label: "Privacy",          icon: "lock" },
+      { id: "accounts", label: "Account safety",   icon: "book" },
+    ],
+  },
+  {
+    id: "hardware", label: "Hardware", icon: "chip", image: categoryImg("hardware.svg"),
+    subcategories: [
+      { id: "security-keys", label: "Security keys", icon: "lock" },
+      { id: "storage",       label: "Encrypted storage", icon: "chip" },
+      { id: "network-gear",  label: "Network gear", icon: "layers" },
+      { id: "accessories",   label: "Accessories", icon: "tool" },
+    ],
+  },
+  {
+    id: "services", label: "Services", icon: "tool", image: categoryImg("services.svg"),
+    subcategories: [
+      { id: "setup",   label: "Setup and onboarding", icon: "tool" },
+      { id: "audits",  label: "Security audits",      icon: "shield" },
+      { id: "support", label: "Support plans",        icon: "refresh" },
+    ],
+  },
 ];
 
 // ---------------------------------------------------------------------------
 //  PRODUCTS
+//   P(id, name, category, sub, price, { ...optional fields })
+//
 //   id           unique number
 //   name         shown on the card, cart and orders
 //   category     one of the category ids above
+//   sub          one of that category's subcategory ids
 //   price        in USD
 //   image        picture path (optional)
 //   imageFit     "cover" fills the frame (photos), "contain" shows the whole
 //                picture (logos / transparent images). Default: "cover"
 //   description  one or two lines under the name (optional)
-//   stock        number in stock; 0 shows "Sold out" (optional)
+//   stock        number in stock; 0 shows "Sold out" (default 50)
 //   badge        small label on the picture, e.g. "New" (optional)
+//   balance      optional. Shows "Balance $X" above the Add button, for
+//                prepaid items like gift cards. Example:  balance: 10000
 // ---------------------------------------------------------------------------
+const P = (id, name, category, sub, price, extra = {}) => ({
+  id, name, category, sub, price, imageFit: "cover", stock: 50, ...extra,
+});
+
 export const PRODUCTS = [
-  { id: 1,  name: "Password manager, 1 year",      category: "software",   price: 29,  image: productImg("password-manager.jpg"), imageFit: "cover", description: "Store and autofill your logins on all your devices.", stock: 50, badge: "Popular" },
-  { id: 2,  name: "VPN subscription, 12 months",   category: "software",   price: 49,  image: productImg("vpn.jpg"),              imageFit: "cover", description: "Encrypted connection for up to five devices.",       stock: 50 },
-  { id: 3,  name: "Encrypted backup tool",         category: "software",   price: 39,  image: productImg("backup-tool.jpg"),      imageFit: "cover", description: "Automatic backups that only you can open.",          stock: 30, badge: "New" },
-  { id: 4,  name: "Gift card $25",                 category: "gift-cards", price: 25,  image: productImg("gift-25.png"),          imageFit: "cover", description: "Delivered instantly after payment.",                 stock: 100 },
-  { id: 5,  name: "Gift card $50",                 category: "gift-cards", price: 50,  image: productImg("gift-50.png"),          imageFit: "cover", description: "Delivered instantly after payment.",                 stock: 100 },
-  { id: 6,  name: "Gift card $100",                category: "gift-cards", price: 100, image: productImg("gift-100.png"),         imageFit: "cover", description: "Delivered instantly after payment.",                 stock: 100 },
-  { id: 7,  name: "Home network security guide",   category: "guides",     price: 12,  image: productImg("network-guide.jpg"),    imageFit: "cover", description: "Step-by-step guide to locking down your network.",   stock: 999 },
-  { id: 8,  name: "Privacy basics handbook",       category: "guides",     price: 9,   image: productImg("privacy-handbook.jpg"), imageFit: "cover", description: "Plain-language guide to staying private online.",    stock: 999 },
-  { id: 9,  name: "Hardware security key",         category: "hardware",   price: 45,  image: productImg("security-key.jpg"),     imageFit: "cover", description: "USB security key for two-factor sign-in.",           stock: 20 },
-  { id: 10, name: "Encrypted USB drive 64GB",      category: "hardware",   price: 35,  image: productImg("usb-drive.jpg"),        imageFit: "cover", description: "Hardware-encrypted storage with PIN pad.",           stock: 15 },
-  { id: 11, name: "Setup and onboarding session",  category: "services",   price: 60,  image: productImg("onboarding.jpg"),       imageFit: "cover", description: "One-to-one session to get you set up.",              stock: 10 },
-  { id: 12, name: "Account security review",       category: "services",   price: 80,  image: productImg("security-review.jpg"),  imageFit: "cover", description: "We check your accounts and send a written report.",  stock: 10 },
+  // ---- Software / Password managers ----
+  P(1,  "Password manager, 1 year",         "software", "password-managers", 29,  { image: productImg("password-manager.jpg"), description: "Store and autofill your logins on all your devices.", badge: "Popular" }),
+  P(13, "Password manager family plan",     "software", "password-managers", 59,  { description: "Six separate vaults with shared folders, for one year." }),
+  P(14, "Password manager business, 5 seats", "software", "password-managers", 119, { description: "Team sharing, admin controls and activity logs." }),
+
+  // ---- Software / VPN ----
+  P(15, "VPN subscription, 1 month",        "software", "vpn", 7,  { description: "Try it for a month. Up to five devices." }),
+  P(2,  "VPN subscription, 12 months",      "software", "vpn", 49, { image: productImg("vpn.jpg"), description: "Encrypted connection for up to five devices." }),
+  P(16, "VPN subscription, 24 months",      "software", "vpn", 79, { description: "Our lowest monthly price.", badge: "Best value" }),
+
+  // ---- Software / Backup and storage ----
+  P(3,  "Encrypted backup tool",            "software", "backup", 39,  { image: productImg("backup-tool.jpg"), description: "Automatic backups that only you can open.", stock: 30, badge: "New" }),
+  P(18, "Cloud backup 1TB, 1 year",         "software", "backup", 69,  { description: "Encrypted cloud storage with version history." }),
+  P(19, "Cloud backup 5TB, 1 year",         "software", "backup", 149, { description: "Room for whole libraries, with file recovery." }),
+
+  // ---- Software / Antivirus ----
+  P(20, "Antivirus, 1 device, 1 year",      "software", "antivirus", 19, { description: "Real-time protection for one computer." }),
+  P(21, "Antivirus, 5 devices, 1 year",     "software", "antivirus", 39, { description: "Covers computers and phones.", badge: "Popular" }),
+  P(22, "Antivirus, 10 devices, 1 year",    "software", "antivirus", 59, { description: "Protection for the whole household." }),
+
+  // ---- Gift cards / Shopping ----
+  P(4,  "Shopping gift card $25",           "gift-cards", "shopping", 25,  { image: productImg("gift-25.png"),  description: "Delivered instantly after payment.", stock: 100, balance: 25 }),
+  P(5,  "Shopping gift card $50",           "gift-cards", "shopping", 50,  { image: productImg("gift-50.png"),  description: "Delivered instantly after payment.", stock: 100, balance: 50 }),
+  P(6,  "Shopping gift card $100",          "gift-cards", "shopping", 100, { image: productImg("gift-100.png"), description: "Delivered instantly after payment.", stock: 100, balance: 100 }),
+
+  // ---- Gift cards / Gaming ----
+  P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gift-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
+  P(24, "Gaming gift card $50",             "gift-cards", "gaming", 50,  { image: productImg("gift-50.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 50 }),
+  P(25, "Gaming gift card $100",            "gift-cards", "gaming", 100, { image: productImg("gift-100.png"), description: "Credit for games and add-ons.", stock: 100, balance: 100 }),
+
+  // ---- Gift cards / Streaming ----
+  P(26, "Streaming gift card $15",          "gift-cards", "streaming", 15, { image: productImg("gift-25.png"),  description: "About one month of streaming.", stock: 100, balance: 15 }),
+  P(27, "Streaming gift card $30",          "gift-cards", "streaming", 30, { image: productImg("gift-50.png"),  description: "About two months of streaming.", stock: 100, balance: 30 }),
+  P(28, "Streaming gift card $60",          "gift-cards", "streaming", 60, { image: productImg("gift-100.png"), description: "About four months of streaming.", stock: 100, balance: 60 }),
+
+  // ---- Guides / Network security ----
+  P(7,  "Home network security guide",      "guides", "network", 12, { image: productImg("network-guide.jpg"), description: "Step-by-step guide to locking down your network.", stock: 999 }),
+  P(29, "Router hardening checklist",       "guides", "network", 6,  { description: "A one-page checklist you can finish in an evening.", stock: 999 }),
+  P(30, "Wi-Fi security for small offices", "guides", "network", 14, { description: "Guest networks, passwords and device rules.", stock: 999 }),
+
+  // ---- Guides / Privacy ----
+  P(8,  "Privacy basics handbook",          "guides", "privacy", 9, { image: productImg("privacy-handbook.jpg"), description: "Plain-language guide to staying private online.", stock: 999 }),
+  P(31, "Browser privacy settings guide",   "guides", "privacy", 7, { description: "The settings worth changing in every major browser.", stock: 999 }),
+  P(32, "Messaging and email privacy guide", "guides", "privacy", 8, { description: "Choosing and configuring private communication.", stock: 999 }),
+
+  // ---- Guides / Account safety ----
+  P(33, "Two-factor authentication guide",  "guides", "accounts", 6, { description: "Set up 2FA on your important accounts.", stock: 999 }),
+  P(34, "Account recovery planning guide",  "guides", "accounts", 7, { description: "Make sure you never get locked out for good.", stock: 999 }),
+  P(35, "Spotting phishing: a practical guide", "guides", "accounts", 9, { description: "Real examples and what to check before you click.", stock: 999 }),
+
+  // ---- Hardware / Security keys ----
+  P(9,  "Hardware security key",            "hardware", "security-keys", 45, { image: productImg("security-key.jpg"), description: "USB security key for two-factor sign-in.", stock: 20 }),
+  P(36, "Security key, USB-C and NFC",      "hardware", "security-keys", 59, { description: "Works with computers and phones.", stock: 20, badge: "New" }),
+  P(37, "Security key 2-pack",              "hardware", "security-keys", 79, { description: "One to use, one safely stored as backup.", stock: 20 }),
+
+  // ---- Hardware / Encrypted storage ----
+  P(10, "Encrypted USB drive 64GB",         "hardware", "storage", 35,  { image: productImg("usb-drive.jpg"), description: "Hardware-encrypted storage with PIN pad.", stock: 15 }),
+  P(38, "Encrypted USB drive 128GB",        "hardware", "storage", 55,  { description: "More room, same PIN-pad protection.", stock: 15 }),
+  P(39, "Encrypted portable SSD 1TB",       "hardware", "storage", 119, { description: "Fast external drive with hardware encryption.", stock: 10 }),
+
+  // ---- Hardware / Network gear ----
+  P(40, "Secure Wi-Fi router, WPA3",        "hardware", "network-gear", 89,  { description: "Modern encryption and automatic updates.", stock: 12 }),
+  P(41, "Hardware firewall appliance",      "hardware", "network-gear", 149, { description: "Small-office firewall with a simple dashboard.", stock: 8 }),
+
+  // ---- Hardware / Accessories ----
+  P(42, "Webcam cover, 3-pack",             "hardware", "accessories", 8,  { description: "Slide covers that fit laptops and monitors.", stock: 200 }),
+  P(43, "Privacy screen filter, 15 inch",   "hardware", "accessories", 25, { description: "Keeps your screen readable only from the front.", stock: 40 }),
+
+  // ---- Services / Setup and onboarding ----
+  P(11, "Setup and onboarding session",     "services", "setup", 60, { image: productImg("onboarding.jpg"), description: "One-to-one session to get you set up.", stock: 10 }),
+  P(44, "Password manager migration help",  "services", "setup", 40, { description: "We move your logins across and clean up duplicates.", stock: 10 }),
+  P(45, "Device hardening session",         "services", "setup", 75, { description: "We secure one computer or phone with you, live.", stock: 10 }),
+
+  // ---- Services / Security audits ----
+  P(12, "Account security review",          "services", "audits", 80,  { image: productImg("security-review.jpg"), description: "We check your accounts and send a written report.", stock: 10 }),
+  P(46, "Home network audit",               "services", "audits", 120, { description: "We review your router, devices and settings.", stock: 8 }),
+  P(47, "Small business security audit",    "services", "audits", 250, { description: "A full review with a prioritised action plan.", stock: 5 }),
+
+  // ---- Services / Support plans ----
+  P(48, "Monthly support plan",             "services", "support", 30, { description: "Email support for security questions, one month.", stock: 25 }),
+  P(49, "Priority support, 3 months",       "services", "support", 90, { description: "Faster replies and one video call per month.", stock: 15 }),
+  P(50, "Account recovery assistance",      "services", "support", 55, { description: "Help working through locked-out account recovery.", stock: 10 }),
 ];
