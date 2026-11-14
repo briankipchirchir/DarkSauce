@@ -18,23 +18,6 @@ const ADMIN_TELEGRAM = "https://t.me/flowers0890";
 
 const usd = (n) => `$${Number(n).toLocaleString("en-US")}`;
 
-// How many products each category shows on the dashboard (/). /products shows all.
-// A category with more subcategories than this shows one product per subcategory.
-const HOME_PREVIEW = 4;
-
-// Pick products evenly across subcategories: one from each, then a second from each, and so on
-function spread(items, subs, limit) {
-  if (limit === Infinity || subs.length === 0) return items.slice(0, limit);
-  const buckets = subs.map((s) => items.filter((p) => p.sub === s.id));
-  const out = [];
-  for (let i = 0; out.length < limit && buckets.some((b) => i < b.length); i++) {
-    for (const b of buckets) {
-      if (i < b.length && out.length < limit) out.push(b[i]);
-    }
-  }
-  return out;
-}
-
 /* One product card.
    - With a balance (e.g. gift cards): shows Balance and Price, then the Add button.
    - Without a balance: shows just the price next to the Add button. */
@@ -75,6 +58,28 @@ function ProductCard({ p, flash, onAdd }) {
           {button}
         </div>
       )}
+    </article>
+  );
+}
+
+/* One subcategory card.
+   The picture is the FIRST product's picture in that subcategory (the first one
+   listed in data.js). Clicking the card or the button opens that subcategory. */
+function SubCard({ cat, sub, onOpen }) {
+  const items = PRODUCTS.filter((p) => p.category === cat.id && p.sub === sub.id);
+  const first = items[0];
+  if (!first) return null;
+  return (
+    <article className="dx-subcard" onClick={() => onOpen(sub.id)}>
+      <div className="dx-thumb">
+        <ProductImage product={first} category={{ icon: sub.icon || cat.icon }} size={34} />
+      </div>
+      <span className="dx-cat">{cat.label}</span>
+      <h3>{sub.label}</h3>
+      <small className="dx-subcount">{items.length} {items.length === 1 ? "item" : "items"}</small>
+      <button type="button" className="dx-go">
+        Check available accounts <Icon name="arrow" size={16} />
+      </button>
     </article>
   );
 }
@@ -136,10 +141,10 @@ export default function HomePage() {
     setTimeout(() => setFlash((f) => (f === pid ? null : f)), 1100);
   };
 
-  const pickSub = (subId) => navigate(`/category/${cat.id}?sub=${subId}`);
+  const openSub = (catId, subId) => navigate(`/category/${catId}?sub=${subId}`);
   const backToSubs = () => navigate(`/category/${cat.id}`);
-  const countIn = (subId) => PRODUCTS.filter((p) => p.category === cat.id && p.sub === subId).length;
   const totalIn = cat ? PRODUCTS.filter((p) => p.category === cat.id).length : 0;
+  const subsWithItems = subs.filter((s) => PRODUCTS.some((p) => p.category === cat?.id && p.sub === s.id));
 
   return (
     <>
@@ -204,20 +209,14 @@ export default function HomePage() {
                 <span className="dx-eyebrow">Choose a type</span>
                 <h2>{cat.label}</h2>
               </div>
-              <span className="dx-count">{subs.length} {subs.length === 1 ? "type" : "types"}</span>
+              <span className="dx-count">{subsWithItems.length} {subsWithItems.length === 1 ? "type" : "types"}</span>
             </header>
 
-            <div className="dx-subs">
-              {subs.map((s) => (
-                <button key={s.id} type="button" className="dx-sub" onClick={() => pickSub(s.id)}>
-                  <span className="dx-sub-ico"><Icon name={s.icon || cat.icon} size={24} /></span>
-                  <span>
-                    <b>{s.label}</b>
-                    <small>{countIn(s.id)} {countIn(s.id) === 1 ? "item" : "items"}</small>
-                  </span>
-                </button>
+            <div className="dx-subcards">
+              {subsWithItems.map((s) => (
+                <SubCard key={s.id} cat={cat} sub={s} onOpen={(subId) => openSub(cat.id, subId)} />
               ))}
-              <button type="button" className="dx-sub dx-sub-all" onClick={() => pickSub("all")}>
+              <button type="button" className="dx-sub dx-sub-all" onClick={() => openSub(cat.id, "all")}>
                 <span className="dx-sub-ico"><Icon name="layers" size={24} /></span>
                 <span>
                   <b>All {cat.label.toLowerCase()}</b>
@@ -238,42 +237,39 @@ export default function HomePage() {
 
             <div className="dx-sections">
               {sections.map(({ cat: c, items }) => {
-                const csubs = c.subcategories || [];
-                // home: at least one product from every subcategory; /products: everything
-                const limit = path === "/" ? Math.max(HOME_PREVIEW, csubs.length) : Infinity;
+                const csubs = (c.subcategories || []).filter((s) => items.some((p) => p.sub === s.id));
                 return (
                   <section key={c.id} className="dx-sec">
                     <div className="dx-sec-head">
                       <span className="dx-sec-ico"><CategoryIcon category={c} size={28} /></span>
                       <div>
                         <h3>{c.label}</h3>
-                        <small>{items.length} {items.length === 1 ? "item" : "items"}</small>
+                        <small>
+                          {csubs.length > 0
+                            ? `${csubs.length} ${csubs.length === 1 ? "type" : "types"}`
+                            : `${items.length} ${items.length === 1 ? "item" : "items"}`}
+                        </small>
                       </div>
                       <button type="button" className="dx-viewall" onClick={() => navigate(`/category/${c.id}`)}>
                         View all <Icon name="arrow" size={14} />
                       </button>
                     </div>
 
-                    {csubs.length > 0 && (
-                      <div className="dx-subchips">
+                    {csubs.length > 0 ? (
+                      // subcategory cards only: customers open one to see its products
+                      <div className="dx-subcards">
                         {csubs.map((s) => (
-                          <button
-                            key={s.id}
-                            type="button"
-                            className="dx-subchip"
-                            onClick={() => navigate(`/category/${c.id}?sub=${s.id}`)}
-                          >
-                            {s.label}<em>{items.filter((p) => p.sub === s.id).length}</em>
-                          </button>
+                          <SubCard key={s.id} cat={c} sub={s} onOpen={(subId) => openSub(c.id, subId)} />
+                        ))}
+                      </div>
+                    ) : (
+                      // a category with no subcategories shows its products directly
+                      <div className="dx-grid">
+                        {items.map((p) => (
+                          <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />
                         ))}
                       </div>
                     )}
-
-                    <div className="dx-grid">
-                      {spread(items, csubs, limit).map((p) => (
-                        <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />
-                      ))}
-                    </div>
                   </section>
                 );
               })}
