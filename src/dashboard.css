@@ -501,11 +501,65 @@
 @media (max-width: 900px) {
   .pay-grid { grid-template-columns: minmax(0, 1fr); }
 }
+
 @media (max-width: 560px) {
   .pay-head { gap: 12px; }
   .pay-row { flex-wrap: wrap; }
   .pay-eq { text-align: left; }
-  .pay-coin { flex: 1 1 calc(50% - 6px); justify-content: center; }
+
+  /* Crypto selector: exactly 2 per row */
+  .pay-coins {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  .pay-coin {
+    min-width: 0;
+    flex-wrap: wrap;              /* logo + name on line 1, price on line 2 */
+    justify-content: center;
+    align-content: center;
+    gap: 2px 8px;
+    min-height: 64px;
+    padding: 10px 8px;
+  }
+  .pay-coin small {
+    flex-basis: 100%;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Amount presets: 4 chips in a row, custom amount on its own line */
+  .pay-edit {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+  }
+  .pay-chip { height: 44px; padding: 0; }
+  .pay-amt { grid-column: 1 / -1; height: 48px; }
+  .pay-amt input { flex: 1; width: 100%; min-width: 0; }
+
+  /* Deposit address: show it in full (wrapped) and stack the Copy button */
+  .pay-addr { flex-direction: column; }
+  .pay-addr code {
+    flex: none;
+    height: auto;
+    line-height: 1.5;
+    padding: 10px 12px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-all;
+  }
+  .pay-copy { justify-content: center; height: 46px; }
+
+  .pay-qr { width: min(220px, 100%); }
   .pay-steps { gap: 8px; }
-  .pay-copy { padding: 0 12px; }
+  .pay-step { padding: 12px 4px; }
+}
+
+@media (max-width: 400px) {
+  .pay-card { padding: 16px; border-radius: 16px; }
+  .pay-coin { font-size: 14px; }
+  .pay-step b { font-size: 11px; letter-spacing: .06em; }
 }

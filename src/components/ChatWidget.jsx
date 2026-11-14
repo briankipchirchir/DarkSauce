@@ -48,6 +48,7 @@ export default function ChatWidget() {
           <header>
             <div>
               <strong>Support</strong>
+              
               <small>We usually reply within a few hours</small>
             </div>
             <button className="dx-icon-btn" onClick={toggle} aria-label="Close chat"><Icon name="close" size={18} /></button>
