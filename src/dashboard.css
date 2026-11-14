@@ -498,68 +498,87 @@
 .pay-done { display: grid; gap: 14px; margin-top: 16px; text-align: center; }
 .pay-done p { margin: 0; color: #c9d2e6; line-height: 1.6; }
 
+/* ---------- Payment page: responsive ---------- */
 @media (max-width: 900px) {
   .pay-grid { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* Phones: compact layout so most of the page is visible with little scrolling */
 @media (max-width: 560px) {
-  .pay-head { gap: 12px; }
-  .pay-row { flex-wrap: wrap; }
-  .pay-eq { text-align: left; }
+  /* tighter page rhythm */
+  .dx-main:has(.pay) { padding-top: 10px; }
+  .pay { gap: 10px; }
+  .pay-grid, .pay-col { gap: 10px; }
+  .pay-card { padding: 12px; border-radius: 14px; }
+  .pay-label { margin: 0 0 8px; font-size: 11px; letter-spacing: .1em; }
 
-  /* Crypto selector: exactly 2 per row */
-  .pay-coins {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-  }
+  /* header + demo notice */
+  .pay-head { gap: 10px; }
+  .pay-tile { width: 36px; height: 36px; border-radius: 10px; }
+  .pay-tile svg { width: 18px; height: 18px; }
+  .pay-head h1 { font-size: 18px; }
+  .pay-head p { margin-top: 2px; font-size: 12px; }
+  .pay-demo { padding: 8px 10px; font-size: 12px; line-height: 1.35; border-radius: 10px; }
+
+  /* order summary + amount due */
+  .pay-money { font-size: 26px; }
+  .pay-sub { margin-top: 2px; font-size: 12px; }
+  .pay-badge { padding: 3px 10px; font-size: 11px; }
+  .pay-row { flex-wrap: nowrap; }
+  .pay-eq { text-align: right; }
+  .pay-eq span { font-size: 11px; }
+  .pay-eq b { margin-top: 2px; font-size: 15px; }
+  .pay-eq small { font-size: 11px; }
+  .pay-note { margin-top: 8px; font-size: 12px; }
+
+  /* amount chips: 4 in a row, custom amount on its own line */
+  .pay-edit { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 10px; }
+  .pay-chip { height: 36px; padding: 0; font-size: 13px; }
+  .pay-amt { grid-column: 1 / -1; height: 40px; }
+  .pay-amt input { flex: 1; width: 100%; min-width: 0; font-size: 16px; } /* 16px avoids iOS zoom */
+
+  /* coins: exactly 2 per row, compact */
+  .pay-coins { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
   .pay-coin {
-    min-width: 0;
-    flex-wrap: wrap;              /* logo + name on line 1, price on line 2 */
-    justify-content: center;
-    align-content: center;
-    gap: 2px 8px;
-    min-height: 64px;
-    padding: 10px 8px;
+    min-width: 0; min-height: 40px; padding: 6px 8px; gap: 6px;
+    justify-content: flex-start; font-size: 13px;
   }
-  .pay-coin small {
-    flex-basis: 100%;
-    text-align: center;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+  .pay-coin .dx-clogo, .pay-coin img { width: 20px !important; height: 20px !important; }
+  .pay-coin small { margin-left: auto; font-size: 10px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-  /* Amount presets: 4 chips in a row, custom amount on its own line */
-  .pay-edit {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 8px;
-  }
-  .pay-chip { height: 44px; padding: 0; }
-  .pay-amt { grid-column: 1 / -1; height: 48px; }
-  .pay-amt input { flex: 1; width: 100%; min-width: 0; }
+  /* deposit card */
+  .pay-coinhead { gap: 10px; }
+  .pay-logo { width: 34px; height: 34px; border-radius: 10px; }
+  .pay-coinhead b { font-size: 15px; }
+  .pay-coinhead small { font-size: 12px; }
+  .pay-qr { width: 140px; margin: 10px auto 12px; padding: 6px; border-radius: 10px; }
 
-  /* Deposit address: show it in full (wrapped) and stack the Copy button */
-  .pay-addr { flex-direction: column; }
-  .pay-addr code {
-    flex: none;
-    height: auto;
-    line-height: 1.5;
-    padding: 10px 12px;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    word-break: break-all;
-  }
-  .pay-copy { justify-content: center; height: 46px; }
+  .pay-addr { flex-direction: row; gap: 6px; }
+  .pay-addr code { height: 38px; line-height: 36px; padding: 0 10px; font-size: 12px; }
+  .pay-copy { height: 38px; padding: 0 10px; font-size: 12px; }
+  .pay-camt { margin-top: 10px; padding: 8px; }
+  .pay-camt b { font-size: 18px; }
+  .pay-camt small { margin-top: 2px; font-size: 12px; }
+  .pay-warn { margin-top: 10px; padding: 8px 10px; font-size: 12px; gap: 8px; }
 
-  .pay-qr { width: min(220px, 100%); }
-  .pay-steps { gap: 8px; }
-  .pay-step { padding: 12px 4px; }
+  /* steps: short and tight */
+  .pay-steps { gap: 6px; margin-top: 10px; }
+  .pay-step { gap: 2px; padding: 8px 2px; }
+  .pay-step i { width: 26px; height: 26px; }
+  .pay-step i svg { width: 14px; height: 14px; }
+  .pay-step b { font-size: 10px; letter-spacing: .06em; }
+  .pay-step small { font-size: 10px; }
+
+  .dx-wide { margin-top: 10px; height: 44px; }
+  .pay-bar { margin-top: 10px; }
+  .pay-done { gap: 10px; margin-top: 10px; }
+  .pay-done .dx-done { width: 48px; height: 48px; }
+  .pay-done .dx-actions { flex-direction: column; }
+  .pay-done .dx-actions .dx-btn { width: 100%; justify-content: center; height: 44px; }
 }
 
 @media (max-width: 400px) {
-  .pay-card { padding: 16px; border-radius: 16px; }
-  .pay-coin { font-size: 14px; }
-  .pay-step b { font-size: 11px; letter-spacing: .06em; }
+  .pay-card { padding: 10px; }
+  .pay-money { font-size: 24px; }
+  .pay-qr { width: 120px; }
 }
