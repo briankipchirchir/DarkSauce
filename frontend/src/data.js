@@ -49,10 +49,10 @@ export const ACCEPTED_COINS = COINS.filter((c) => c.accepted);
 // ---------------------------------------------------------------------------
 export const CATEGORIES = [
   {
-    id: "software", label: "Software", icon: "code", image: categoryImg("software.svg"),
-    subcategories: [
-      { id: "password-managers", label: "Password managers", icon: "lock" },
-      { id: "vpn",               label: "VPN",               icon: "shield" },
+      id: "USA BANK LOGS", label: "USA BANK LOGS", icon: "layers", image: categoryImg("cit.svg"),
+  subcategories: [
+    { id: "CITI BANK", label: "CITI BANK", icon: "layers" },
+      { id: "WELLS FARGO BANK", label: "WELLS FARGO BANK", icon: "shield" },
       { id: "backup",            label: "Backup and storage", icon: "refresh" },
       { id: "antivirus",         label: "Antivirus",         icon: "bolt" },
     ],
@@ -120,14 +120,28 @@ const P = (id, name, category, sub, price, extra = {}) => ({
 
 export const PRODUCTS = [
   // ---- Software / Password managers ----
-  P(1,  "Password manager, 1 year",         "software", "password-managers", 29,  { image: productImg("password-manager.jpg"), description: "Store and autofill your logins on all your devices.", badge: "Popular" }),
-  P(13, "Password manager family plan",     "software", "password-managers", 59,  { description: "Six separate vaults with shared folders, for one year." }),
-  P(14, "Password manager business, 5 seats", "software", "password-managers", 119, { description: "Team sharing, admin controls and activity logs." }),
-
+  P(1,  "CITI BANK",         "USA BANK LOGS", "CITI BANK", 29,  { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...", badge: "Popular",balance: 1500 }),
+  P(13, "CITI BANK",     "USA BANK LOGS", "CITI BANK", 59, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 1900 }),
+  P(14, "CITI BANK", "USA BANK LOGS", "CITI BANK", 119, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 2500 }),
+  P(10,  "CITI BANK",         "USA BANK LOGS", "CITI BANK", 29,  { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...", badge: "Popular",balance: 2200 }),
+  P(15, "CITI BANK",     "USA BANK LOGS", "CITI BANK", 59, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 5000 }),
+  P(16, "CITI BANK", "USA BANK LOGS", "CITI BANK", 119, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 3500 }),
+    P(17,  "CITI BANK",         "USA BANK LOGS", "CITI BANK", 29,  { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...", badge: "Popular",balance: 7000 }),
+  P(20, "CITI BANK",     "USA BANK LOGS", "CITI BANK", 59, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 4200 }),
+  P(19, "CITI BANK", "USA BANK LOGS", "CITI BANK", 119, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 3700 }),
+    P(18,  "CITI BANK",         "USA BANK LOGS", "CITI BANK", 29,  { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...", badge: "Popular",balance: 4900 }),
+  P(21, "CITI BANK",     "USA BANK LOGS", "CITI BANK", 59, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 4100 }),
+  P(6, "CITI BANK", "USA BANK LOGS", "CITI BANK", 119, { image: productImg("cit.png"),  description: "Citi Login Info ✅ Email access ✅ IDentity : Driver's license ✅ Additional Info : [ATM-Pin - Accou...",balance: 1500 }),
   // ---- Software / VPN ----
-  P(15, "VPN subscription, 1 month",        "software", "vpn", 7,  { description: "Try it for a month. Up to five devices." }),
-  P(2,  "VPN subscription, 12 months",      "software", "vpn", 49, { image: productImg("vpn.jpg"), description: "Encrypted connection for up to five devices." }),
-  P(16, "VPN subscription, 24 months",      "software", "vpn", 79, { description: "Our lowest monthly price.", badge: "Best value" }),
+  P(111, "WELLS FARGO BANK",        "USA BANK LOGS", "WELLS FARGO BANK", 7,  {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(102,  "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 49, { image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(160, "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 79, {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(100, "WELLS FARGO BANK",        "USA BANK LOGS", "WELLS FARGO BANK", 7,  {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(103,  "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 49, { image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(161, "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 79, {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(107, "WELLS FARGO BANK",        "USA BANK LOGS", "WELLS FARGO BANK", 7,  {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(198,  "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 49, { image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(145, "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 79, {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
 
   // ---- Software / Backup and storage ----
   P(3,  "Encrypted backup tool",            "software", "backup", 39,  { image: productImg("backup-tool.jpg"), description: "Automatic backups that only you can open.", stock: 30, badge: "New" }),
