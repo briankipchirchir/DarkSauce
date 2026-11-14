@@ -53,8 +53,9 @@ export const CATEGORIES = [
   subcategories: [
     { id: "CITI BANK", label: "CITI BANK", icon: "layers" },
       { id: "WELLS FARGO BANK", label: "WELLS FARGO BANK", icon: "shield" },
-      { id: "backup",            label: "Backup and storage", icon: "refresh" },
-      { id: "antivirus",         label: "Antivirus",         icon: "bolt" },
+      { id: "chime",            label: "chime", icon: "refresh" },
+      { id: "chase",         label: "chase",         icon: "bolt" },
+      { id: "america",         label: "america",         icon: "bolt" },
     ],
   },
   {
@@ -143,15 +144,36 @@ export const PRODUCTS = [
   P(198,  "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 49, { image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
   P(145, "WELLS FARGO BANK",      "USA BANK LOGS", "WELLS FARGO BANK", 79, {image: productImg("wells.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
 
-  // ---- Software / Backup and storage ----
-  P(3,  "Encrypted backup tool",            "software", "backup", 39,  { image: productImg("backup-tool.jpg"), description: "Automatic backups that only you can open.", stock: 30, badge: "New" }),
-  P(18, "Cloud backup 1TB, 1 year",         "software", "backup", 69,  { description: "Encrypted cloud storage with version history." }),
-  P(19, "Cloud backup 5TB, 1 year",         "software", "backup", 149, { description: "Room for whole libraries, with file recovery." }),
 
-  // ---- Software / Antivirus ----
-  P(20, "Antivirus, 1 device, 1 year",      "software", "antivirus", 19, { description: "Real-time protection for one computer." }),
-  P(21, "Antivirus, 5 devices, 1 year",     "software", "antivirus", 39, { description: "Covers computers and phones.", badge: "Popular" }),
-  P(22, "Antivirus, 10 devices, 1 year",    "software", "antivirus", 59, { description: "Protection for the whole household." }),
+    P(1111, "chime",        "USA BANK LOGS", "chime", 7,  {image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(1021,  "chime",      "USA BANK LOGS", "chime", 49, { image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(1601, "chime",      "USA BANK LOGS", "chime", 79, {image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(1001, "chime",        "USA BANK LOGS", "chime", 7,  {image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(1031,  "chime",      "USA BANK LOGS", "chime", 49, { image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(1611, "chime",      "USA BANK LOGS", "chime", 79, {image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(1071, "chime",        "USA BANK LOGS", "chime", 7,  {image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(1981,  "chime",      "USA BANK LOGS", "chime", 49, { image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(145, "chime",      "USA BANK LOGS", "chime", 79, {image: productImg("chime.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+
+   P(11111, "chase",        "USA BANK LOGS", "chase", 7,  {image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(10211,  "chase",      "USA BANK LOGS", "chase", 49, { image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(16011, "chase",      "USA BANK LOGS", "chase", 79, {image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(10011, "chase",        "USA BANK LOGS", "chase", 7,  {image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(10311,  "chase",      "USA BANK LOGS", "chase", 49, { image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(16111, "chase",      "USA BANK LOGS", "chase", 79, {image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(10711, "chase",        "USA BANK LOGS", "chase", 7,  {image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(19811,  "chase",      "USA BANK LOGS", "chase", 49, { image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(1451, "chase",      "USA BANK LOGS", "chase", 79, {image: productImg("chase.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+
+    P(11112, "america",        "USA BANK LOGS", "america", 7,  {image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(10212,  "america",      "USA BANK LOGS", "america", 49, { image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(16012, "america",      "USA BANK LOGS", "america", 79, {image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(10012, "america",        "USA BANK LOGS", "america", 7,  {image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(10312,  "america",      "USA BANK LOGS", "america", 49, { image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(16112, "america",      "USA BANK LOGS", "america", 79, {image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
+  P(10712, "america",        "USA BANK LOGS", "america", 7,  {image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(19812,  "america",      "USA BANK LOGS", "america", 49, { image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...",balance: 1500 }),
+  P(14512, "america",      "USA BANK LOGS", "america", 79, {image: productImg("america.png"), description: "Wells Fargo Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies...", badge: "Best value",balance: 1500 }),
 
   // ---- Gift cards / Shopping (these have a balance, so they show Balance + Price) ----
   P(4,  "Shopping gift card $25",           "gift-cards", "shopping", 25,  { image: productImg("gift-25.png"),  description: "Delivered instantly after payment.", stock: 100, balance: 25 }),
