@@ -15,7 +15,7 @@ const WHY = [
 ];
 
 // Your admin's Telegram username (without the @) or a t.me invite link
-const ADMIN_TELEGRAM = "https://t.me/flower0890";
+const ADMIN_TELEGRAM = "https://t.me/flowers0890";
 
 // Used for  /  (dashboard),  /products  and  /category/:id
 export default function HomePage() {
