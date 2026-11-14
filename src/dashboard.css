@@ -661,14 +661,10 @@
   .dx-buy button { width: auto; height: 30px; padding: 0 9px; font-size: 12px; }
 }
 
-
-/* =====================  "Why DARKSAUCE?" slim sliding strip  ===================== */
-/* full-width slim strip instead of a tall card */
 .dx-info .dx-why { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; padding: 10px 16px; border-radius: 16px; }
 .dx-info .dx-why .dx-ico { flex: none; width: 34px; height: 34px; margin: 0; border-radius: 10px; }
 .dx-info .dx-why h3 { flex: none; margin: 0; font-size: 15px; white-space: nowrap; }
 
-/* the sliding line (right to left, seamless loop) */
 .dx-marquee { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent); }
 .dx-marquee-track { display: flex; width: max-content; animation: dxmarq 16s linear infinite; will-change: transform; }
 .dx-marquee:hover .dx-marquee-track { animation-play-state: paused; }
@@ -683,9 +679,89 @@
   .dx-marquee { flex: 1 1 100%; }
 }
 
-/* reduced motion: stop the slide, let people scroll the line by hand */
 @media (prefers-reduced-motion: reduce) {
   .dx-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
   .dx-marquee-track { animation: none !important; }
   .dx-marquee-set[aria-hidden="true"] { display: none; }
 }
+
+
+/* ===== 2) OPTIONAL: compact cart + checkout pages =====
+   Affects only the cart/checkout layout (lines, summary rows, panels).
+   Skip this block if you don't want those pages changed. */
+.dx-page { gap: 14px; }
+.dx-page-head { gap: 8px; }
+.dx-page-head h1 { margin-top: 4px; font-size: clamp(22px, 3vw, 28px); }
+.dx-page-head .dx-eyebrow { font-size: 11px; }
+.dx-link { font-size: 14px; }
+
+.dx-panel { padding: clamp(14px, 2vw, 18px); border-radius: 16px; }
+.dx-panel h2 { margin: 0 0 8px; font-size: 16px; }
+
+.dx-two { gap: 14px; }
+@media (min-width: 901px) {
+  .dx-two { grid-template-columns: minmax(0, 1fr) 300px; }
+}
+.dx-sum { top: calc(var(--bar) + 14px); }
+
+.dx-line { grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; padding: 10px 0; }
+.dx-line:first-child { padding-top: 0; }
+.dx-line:last-child { padding-bottom: 0; }
+.dx-line .dx-thumb { width: 48px; border-radius: 10px; }
+.dx-line h3 { margin: 0 0 2px; font-size: 14px; }
+.dx-line small { font-size: 12px; }
+.dx-line-end { gap: 10px; }
+.dx-line-total { min-width: 64px; font-size: 14px; }
+.dx-qty { border-radius: 8px; }
+.dx-qty button { width: 30px; height: 32px; font-size: 16px; }
+.dx-qty span { min-width: 26px; font-size: 14px; }
+.dx-rm { width: 32px; height: 32px; border-radius: 8px; }
+.dx-rm svg { width: 16px; height: 16px; }
+
+.dx-row { padding: 6px 0; font-size: 14px; }
+.dx-row.total { margin-top: 4px; padding-top: 10px; font-size: 16px; }
+
+.dx-wide { margin-top: 10px; }
+.dx-warn { margin: 10px 0 0; padding: 8px 10px; border-radius: 10px; font-size: 13px; line-height: 1.45; }
+
+.dx-center { gap: 8px; padding: clamp(20px, 4vw, 34px); }
+.dx-center h2 { font-size: 17px; }
+.dx-center .dx-ico { width: 40px; height: 40px; border-radius: 12px; }
+.dx-done { width: 52px; height: 52px; }
+.dx-center .dx-muted { font-size: 14px; line-height: 1.5; }
+
+@media (max-width: 640px) {
+  .dx-line { grid-template-columns: 44px minmax(0, 1fr); gap: 6px 10px; }
+  .dx-line .dx-thumb { width: 44px; }
+  .dx-qty button { width: 34px; height: 36px; }
+  .dx-rm { width: 36px; height: 36px; }
+}
+@media (max-width: 560px) {
+  .dx-page { gap: 10px; }
+  .dx-panel { padding: 12px; border-radius: 14px; }
+  .dx-two { gap: 10px; }
+  .dx-line-total { min-width: 56px; }
+  .dx-row span { font-size: 13px; }
+}
+
+
+/* ---------- Fix: stop the page growing wider than the screen ---------- */
+.dx-main { grid-template-columns: minmax(0, 1fr); }
+.dx-info > * { min-width: 0; }
+.dx-info .dx-why { min-width: 0; }
+.dx-marquee { min-width: 0; max-width: 100%; contain: inline-size; }
+
+/* ---------- Fix: login ".primary" styles leaking onto dashboard buttons ---------- */
+.dx .dx-btn.primary {
+  width: auto;
+  height: 42px;
+  display: inline-flex;
+  gap: 8px;
+  overflow: visible;
+  letter-spacing: normal;
+  text-transform: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+}
+.dx .dx-btn.primary::after { display: none; }              /* removes the login shimmer effect */
+.dx .dx-btn.dx-wide { width: 100%; justify-content: center; } /* keeps "Go to checkout" etc. full width */
