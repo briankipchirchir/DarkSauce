@@ -53,9 +53,9 @@ export const CATEGORIES = [
   subcategories: [
     { id: "CITI BANK", label: "CITI BANK", icon: "layers" },
       { id: "WELLS FARGO BANK", label: "WELLS FARGO BANK", icon: "shield" },
-      { id: "chime",            label: "chime", icon: "refresh" },
-      { id: "chase",         label: "chase",         icon: "bolt" },
-      { id: "america",         label: "america",         icon: "bolt" },
+      { id: "chime",            label: "CHIME", icon: "refresh" },
+      { id: "chase",         label: "CHASE",         icon: "bolt" },
+      { id: "america",         label: "AMERICA",         icon: "bolt" },
     ],
   },
   {
