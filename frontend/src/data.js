@@ -75,7 +75,7 @@ export const CATEGORIES = [
    {
       id: "CANADIAN LOGS", label: "CANADIAN LOGS", icon: "layers", image: categoryImg("can.png"),
   subcategories: [
-      { id: " CANADIAN IMPERIAL BANK OF COMMERCE", label: "CANADIAN IMPERIAL BANK OF COMMERCE", icon: "layers" },
+      { id: "CANADIAN IMPERIAL BANK OF COMMERCE", label: "CANADIAN IMPERIAL BANK OF COMMERCE", icon: "layers" },
       { id: "RBC (ROYAL BANK OF CANADA)", label: "RBC (ROYAL BANK OF CANADA)", icon: "shield" },
       { id: "TD BANK (TORONTO-DOMINION)",            label: "TD BANK (TORONTO-DOMINION)", icon: "refresh" },
       { id: "SCOTIABANK (BANK OF NOVA SCOTIA)",         label: "SCOTIABANK (BANK OF NOVA SCOTIA)",         icon: "bolt" },
