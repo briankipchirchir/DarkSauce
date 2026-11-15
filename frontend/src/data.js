@@ -72,6 +72,17 @@ export const CATEGORIES = [
       { id: "NATIONWIDE",         label: " NATIONWIDE",         icon: "bolt" },
     ],
   },
+   {
+      id: "CANADIAN LOGS", label: "CANADIAN LOGS", icon: "layers", image: categoryImg("can.png"),
+  subcategories: [
+      { id: " CANADIAN IMPERIAL BANK OF COMMERCE", label: "CANADIAN IMPERIAL BANK OF COMMERCE", icon: "layers" },
+      { id: "RBC (ROYAL BANK OF CANADA)", label: "RBC (ROYAL BANK OF CANADA)", icon: "shield" },
+      { id: "TD BANK (TORONTO-DOMINION)",            label: "TD BANK (TORONTO-DOMINION)", icon: "refresh" },
+      { id: "SCOTIABANK (BANK OF NOVA SCOTIA)",         label: "SCOTIABANK (BANK OF NOVA SCOTIA)",         icon: "bolt" },
+      { id: "BMO (BANK OF MONTREAL)",         label: "BMO (BANK OF MONTREAL)",         icon: "bolt" },
+      { id: "NATIONAL BANK OF CANADA",         label: "NATIONAL BANK OF CANADA",         icon: "bolt" },
+    ],
+  },
   {
     id: "guides", label: "Guides", icon: "book", image: categoryImg("guides.svg"),
     subcategories: [
@@ -278,6 +289,70 @@ export const PRODUCTS = [
   P(1071600, "SANTANDER UK",        "UK BANK LOGS", "SANTANDER UK", 7,  {image: productImg("santander.png"), description: "SANTANDER UK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(1981600,  "SANTANDER UK",      "UK BANK LOGS", "SANTANDER UK", 49, { image: productImg("santander.png"), description: "SANTANDER UK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(1451600, "SANTANDER UK",      "UK BANK LOGS", "SANTANDER UK", 79, {image: productImg("santander.png"), description: "SANTANDER UK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+
+
+   P(111007, "CANADIAN IMPERIAL BANK OF COMMERCE",        "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 7,  {image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(102007,  "NATIONWIDECANADIAN IMPERIAL BANK OF COMMERCE",      "CANADIAN IMPERIAL BANK OF COMMERCE", "NATIONWIDE", 49, { image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(160007, "CANADIAN IMPERIAL BANK OF COMMERCE",      "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 79, {image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...", badge: "Best value",balance: 1500 }),
+  P(100007, "CANADIAN IMPERIAL BANK OF COMMERCE",        "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 7,  {image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(103007,  "CANADIAN IMPERIAL BANK OF COMMERCE",      "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 49, { image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(161007, "CANADIAN IMPERIAL BANK OF COMMERCE",      "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 79, {image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...", badge: "Best value",balance: 1500 }),
+
+  P(107007, "NATIONWIDECANADIAN IMPERIAL BANK OF COMMERCE",        "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 7,  {image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(198007,  "CANADIAN IMPERIAL BANK OF COMMERCE",      "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 49, { image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(145007, "CANADIAN IMPERIAL BANK OF COMMERCE",      "CANADIAN LOGS", "CANADIAN IMPERIAL BANK OF COMMERCE", 79, {image: productImg("cibc.png"), description: "NATIONWIDE | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...", badge: "Best value",balance: 1500 }),
+
+
+  P(1111008, "RBC (ROYAL BANK OF CANADA)",        "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 7,  {image: productImg("rbc.png"), description: "HSBC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(1021008,  "RBC (ROYAL BANK OF CANADA)",      "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 49, { image: productImg("rbc.png"), description: "HSBC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(1601008, "RBC (ROYAL BANK OF CANADA)",      "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 79, {image: productImg("rbc.png"), description: "HSBC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...", badge: "Best value",balance: 1500 }),
+  P(1001008, "RBC (ROYAL BANK OF CANADA)",        "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 7,  {image: productImg("rbc.png"), description: "HSBC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(1031008,  "RBC (ROYAL BANK OF CANADA)",      "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 49, { image: productImg("rbc.png"), description: "HSBC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...",balance: 1500 }),
+  P(1611008, "RBC (ROYAL BANK OF CANADA)",      "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 79, {image: productImg("rbc.png"), description: "HSBC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cookies...", badge: "Best value",balance: 1500 }),
+  P(1071008, "RBC (ROYAL BANK OF CANADA)",        "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 7,  {image: productImg("rbc.png"), description: "Chime | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cooki...",balance: 1500 }),
+  P(1981008,  "RBC (ROYAL BANK OF CANADA)",      "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 49, { image: productImg("rbc.png"), description: "Chime | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cooki...",balance: 1500 }),
+  P(1450008, "RBC (ROYAL BANK OF CANADA)",      "CANADIAN LOGS", "RBC (ROYAL BANK OF CANADA)", 79, {image: productImg("rbc.png"), description: "Chime | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP, Cooki...", badge: "Best value",balance: 1500 }),
+
+  P(11111009, "TD BANK (TORONTO-DOMINION)",        "CANADIAN LOGS", "BARCLAYS BANKTD BANK (TORONTO-DOMINION)", 7,  {image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(10211009,  "TD BANK (TORONTO-DOMINION)",      "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 49, { image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(16011009, "TD BANK (TORONTO-DOMINION)",      "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 79, {image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED", badge: "Best value",balance: 1500 }),
+  P(10011009, "TD BANK (TORONTO-DOMINION)",        "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 7,  {image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(10311009,  "TD BANK (TORONTO-DOMINION)",      "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 49, { image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(16111009, "TD BANK (TORONTO-DOMINION)",      "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 79, {image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED", badge: "Best value",balance: 1500 }),
+  P(10711009, "TD BANK (TORONTO-DOMINION)",        "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 7,  {image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(19811009,  "TD BANK (TORONTO-DOMINION)",      "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 49, { image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(14510009, "TD BANK (TORONTO-DOMINION)",      "CANADIAN LOGS", "TD BANK (TORONTO-DOMINION)", 79, {image: productImg("td.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED", badge: "Best value",balance: 1500 }),
+
+  P(11112006, "SCOTIABANK (BANK OF NOVA SCOTIA)",        "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 7,  {image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(10212006,  "SCOTIABANK (BANK OF NOVA SCOTIA)",      "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 49, { image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(16012006, "SCOTIABANK (BANK OF NOVA SCOTIA)",      "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 79, {image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...", badge: "Best value",balance: 1500 }),
+  P(10012006, "SCOTIABANK (BANK OF NOVA SCOTIA)",        "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 7,  {image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(10312006,  "SCOTIABANK (BANK OF NOVA SCOTIA)",      "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 49, { image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(16112006, "SCOTIABANK (BANK OF NOVA SCOTIA)",      "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 79, {image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...", badge: "Best value",balance: 1500 }),
+  P(10712006, "SCOTIABANK (BANK OF NOVA SCOTIA)",        "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 7,  {image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(19812006,  "SCOTIABANK (BANK OF NOVA SCOTIA)",      "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 49, { image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(14512006, "SCOTIABANK (BANK OF NOVA SCOTIA)",      "CANADIAN LOGS", "SCOTIABANK (BANK OF NOVA SCOTIA)", 79, {image: productImg("scotia.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...", badge: "Best value",balance: 1500 }),
+
+  P(11113003, "BMO (BANK OF MONTREAL)",        "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 7,  {image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(10213003,  "BMO (BANK OF MONTREAL)",      "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 49, { image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(16013003, "BMO (BANK OF MONTREAL)",      "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 79, {image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 1500 }),
+  P(10013003, "BMO (BANK OF MONTREAL)",        "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 7,  {image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(10313003,  "BMO (BANK OF MONTREAL)",      "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 49, { image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(16113003, "BMO (BANK OF MONTREAL)",      "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 79, {image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 1500 }),
+  P(10713003, "BMO (BANK OF MONTREAL)",        "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 7,  {image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(19813003,  "BMO (BANK OF MONTREAL)",      "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 49, { image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(14513003, "BMO (BANK OF MONTREAL)",      "CANADIAN LOGS", "BMO (BANK OF MONTREAL)", 79, {image: productImg("bmo.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 1500 }),
+
+
+  P(111160011, "NATIONAL BANK OF CANADA",        "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 7,  {image: productImg("nb.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(102180011,  "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 49, { image: productImg("nb.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1601600211, "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 79, {image: productImg("nb.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(1001600411, "NATIONAL BANK OF CANADA",        "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 7,  {image: productImg("nb.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1031600511,  "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 49, { image: productImg("nb.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(161160011, "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 79, {image: productImg("nb.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(107160011, "NATIONAL BANK OF CANADA",        "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 7,  {image: productImg("nb.png"), description: "NATIONAL BANK OF CANADA | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(198160011,  "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 49, { image: productImg("nb.png"), description: "NATIONAL BANK OF CANADA | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(145160011, "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 79, {image: productImg("nb.png"), description: "NATIONAL BANK OF CANADA | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
 
   // ---- Gift cards / Gaming ----
   P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gaming-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
