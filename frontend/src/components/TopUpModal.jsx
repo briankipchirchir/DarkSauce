@@ -64,7 +64,9 @@ export default function TopUpModal({ onClose }) {
               <input id="amt" className="dx-input" inputMode="decimal" value={amount} onChange={(e) => setAmount(e.target.value.replace(/[^\d.]/g, ""))} style={{ marginTop: 10 }} />
               {err && <p className="dx-msg bad" role="alert">{err}</p>}
             </div>
-            <button className="dx-btn primary" onClick={next}>Continue</button>
+            <button className="dx-btn primary" onClick={next}>
+              <Icon name="wallet" size={18} />Continue
+            </button>
           </div>
         )}
 
@@ -78,7 +80,9 @@ export default function TopUpModal({ onClose }) {
             </p>
             <div className="dx-actions">
               <button className="dx-btn ghost" onClick={() => setStep(1)}>Back</button>
-              <button className="dx-btn primary" onClick={confirm}>I have sent it</button>
+              <button className="dx-btn primary" onClick={confirm}>
+                <CoinLogo src={LOGOS[coin]} size={20} />I have sent it
+              </button>
             </div>
           </div>
         )}
@@ -89,7 +93,9 @@ export default function TopUpModal({ onClose }) {
             <p className="dx-muted" style={{ textAlign: "center" }}>
               {money(num)} added. Your balance is now <b>{money(state.balance)}</b>.
             </p>
-            <button className="dx-btn primary" onClick={onClose}>Done</button>
+            <button className="dx-btn primary" onClick={onClose}>
+              <Icon name="check" size={18} />Done
+            </button>
           </div>
         )}
       </div>
