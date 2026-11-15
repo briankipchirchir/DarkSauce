@@ -27,12 +27,12 @@ const coinImg = (file) => `/images/coins/${file}`;
 //   accepted    true = can be used to top up the balance
 // ---------------------------------------------------------------------------
 export const COINS = [
-  { symbol: "BTC",  name: "Bitcoin",  coingeckoId: "bitcoin",  logo: coinImg("btc.svg"),  accepted: true },
-  { symbol: "ETH",  name: "Ethereum", coingeckoId: "ethereum", logo: coinImg("eth.svg"),  accepted: false },
-  { symbol: "LTC",  name: "Litecoin", coingeckoId: "litecoin", logo: coinImg("ltc.svg"),  accepted: true },
-  { symbol: "SOL",  name: "Solana",   coingeckoId: "solana",   logo: coinImg("sol.svg"),  accepted: true },
-  { symbol: "USDT", name: "Tether",   coingeckoId: "tether",   logo: coinImg("usdt.svg"), accepted: true },
-  { symbol: "XMR",  name: "Monero",   coingeckoId: "monero",   logo: coinImg("xmr.svg"),  accepted: true },
+  { symbol: "BTC",  name: "Bitcoin",  coingeckoId: "bitcoin",  logo: coinImg("btc.png"),  accepted: true },
+  { symbol: "ETH",  name: "Ethereum", coingeckoId: "ethereum", logo: coinImg("ethere.png"),  accepted: false },
+  { symbol: "LTC",  name: "Litecoin", coingeckoId: "litecoin", logo: coinImg("lol.png"),  accepted: true },
+  { symbol: "SOL",  name: "Solana",   coingeckoId: "solana",   logo: coinImg("solana.png"),  accepted: true },
+  { symbol: "USDT", name: "Tether",   coingeckoId: "tether",   logo: coinImg("tet.png"), accepted: true },
+  { symbol: "XMR",  name: "Monero",   coingeckoId: "monero",   logo: coinImg("monero.png"),  accepted: true },
 ];
 
 export const ACCEPTED_COINS = COINS.filter((c) => c.accepted);
