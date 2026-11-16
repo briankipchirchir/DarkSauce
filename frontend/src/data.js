@@ -110,7 +110,7 @@ export const CATEGORIES = [
   {
     id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("MASTER.png"),
     subcategories: [
-      { id: " USA CLONE CARDS", label: "USA Clone Cards", icon: "lock" },
+      { id: "USA CLONE CARDS", label: "USA CLONE CARDS", icon: "lock" },
     ],
   },
   {
@@ -439,9 +439,9 @@ export const PRODUCTS = [
   P(1001600411927, "ExpressVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("EXPRESS.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   
   // ---- Gift cards / Gaming ----
-  P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gaming-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
-  P(24, "Gaming gift card $50",             "gift-cards", "gaming", 50,  { image: productImg("gaming-50.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 50 }),
-  P(25, "Gaming gift card $100",            "gift-cards", "gaming", 100, { image: productImg("gaming-100.png"), description: "Credit for games and add-ons.", stock: 100, balance: 100 }),
+  P(23, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 25,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
+  P(24, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 50,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 50 }),
+  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 100, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 100, balance: 100 }),
 
   // ---- Gift cards / Streaming ----
   P(26, "Streaming gift card $15",          "gift-cards", "streaming", 15, { image: productImg("streaming-15.png"), description: "About one month of streaming.", stock: 100, balance: 15 }),
