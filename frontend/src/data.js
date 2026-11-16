@@ -93,6 +93,13 @@ export const CATEGORIES = [
       { id: "VERIFIED PAYPAL ACCOUNTS",         label: "VERIFIED PAYPAL ACCOUNTS",         icon: "bolt" },
     ],
   },
+
+    {
+      id: "EGIFT CARDS", label: "EGIFT CARDS", icon: "layers", image: categoryImg("gift.png"),
+  subcategories: [
+      { id: "EGIFT CARDS", label: "EGIFT CARDS", icon: "layers" },
+    ],
+  },
   {
     id: "guides", label: "Guides", icon: "book", image: categoryImg("guides.svg"),
     subcategories: [
@@ -408,6 +415,17 @@ export const PRODUCTS = [
   P(1981600119,  "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 49, { image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(1451600119, "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 79, {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
 
+
+
+    P(11116001192, "Visa eGift",        "EGIFT CARDS", "EGIFT CARDS", 7,  {image: productImg("visa.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(10218001192,  "Amazon eGift Card",      "EGIFT CARDS", "EGIFT CARDS", 49, { image: productImg("amazon.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(160160021192, "Walmart eGift",      "EGIFT CARDS", "EGIFT CARDS", 79, {image: productImg("wal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(100160041192, "Apple eGift",        "EGIFT CARDS", "EGIFT CARDS", 7,  {image: productImg("apple.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(103160051192,  "Visa eGift",      "EGIFT CARDS", "EGIFT CARDS", 49, { image: productImg("visa.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(16116001192, "Walmart eGift",      "EGIFT CARDS", "EGIFT CARDS", 79, {image: productImg("wal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(10716001192, "mazon eGift",        "EGIFT CARDS", "EGIFT CARDS", 7,  {image: productImg("amazon.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(19816001192,  "Visa eGift",      "EGIFT CARDS", "EGIFT CARDS", 49, { image: productImg("visa.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  
   // ---- Gift cards / Gaming ----
   P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gaming-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
   P(24, "Gaming gift card $50",             "gift-cards", "gaming", 50,  { image: productImg("gaming-50.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 50 }),
