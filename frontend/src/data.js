@@ -108,12 +108,9 @@ export const CATEGORIES = [
     ],
   },
   {
-    id: "hardware", label: "Hardware", icon: "chip", image: categoryImg("hardware.svg"),
+    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("hardware.svg"),
     subcategories: [
-      { id: "security-keys", label: "Security keys", icon: "lock" },
-      { id: "storage",       label: "Encrypted storage", icon: "chip" },
-      { id: "network-gear",  label: "Network gear", icon: "layers" },
-      { id: "accessories",   label: "Accessories", icon: "tool" },
+      { id: " USA CLONE CARDS", label: "USA Clone Cards", icon: "lock" },
     ],
   },
   {
