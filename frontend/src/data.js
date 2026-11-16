@@ -108,7 +108,7 @@ export const CATEGORIES = [
     ],
   },
   {
-    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("hardware.svg"),
+    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("MASTER.png"),
     subcategories: [
       { id: " USA CLONE CARDS", label: "USA Clone Cards", icon: "lock" },
     ],
