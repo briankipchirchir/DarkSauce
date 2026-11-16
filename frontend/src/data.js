@@ -90,7 +90,7 @@ export const CATEGORIES = [
       { id: "PAYPAL LOGS", label: "PAYPAL LOGS", icon: "layers" },
       { id: "CASHAPP LOGS", label: "CASHAPP LOGS", icon: "shield" },
       { id: "CASHAPP AGED ACCOUNTS",  label: "CASHAPP AGED ACCOUNTS", icon: "refresh" },
-      { id: " VERIFIED PAYPAL ACCOUNTS",         label: " VERIFIED PAYPAL ACCOUNTS",         icon: "bolt" },
+      { id: "VERIFIED PAYPAL ACCOUNTS",         label: "VERIFIED PAYPAL ACCOUNTS",         icon: "bolt" },
     ],
   },
   {
