@@ -83,6 +83,16 @@ export const CATEGORIES = [
       { id: "NATIONAL BANK OF CANADA",         label: "NATIONAL BANK OF CANADA",         icon: "bolt" },
     ],
   },
+
+    {
+      id: "PAYPAL_CASHAPP", label: "PAYPAL_CASHAPP", icon: "layers", image: categoryImg("paypal.png"),
+  subcategories: [
+      { id: "PAYPAL LOGS", label: "PAYPAL LOGS", icon: "layers" },
+      { id: "CASHAPP LOGS", label: "CASHAPP LOGS", icon: "shield" },
+      { id: "CASHAPP AGED ACCOUNTS",  label: "CASHAPP AGED ACCOUNTS", icon: "refresh" },
+      { id: " VERIFIED PAYPAL ACCOUNTS",         label: " VERIFIED PAYPAL ACCOUNTS",         icon: "bolt" },
+    ],
+  },
   {
     id: "guides", label: "Guides", icon: "book", image: categoryImg("guides.svg"),
     subcategories: [
@@ -353,6 +363,50 @@ export const PRODUCTS = [
   P(107160011, "NATIONAL BANK OF CANADA",        "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 7,  {image: productImg("nb.png"), description: "NATIONAL BANK OF CANADA | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(198160011,  "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 49, { image: productImg("nb.png"), description: "NATIONAL BANK OF CANADA | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(145160011, "NATIONAL BANK OF CANADA",      "CANADIAN LOGS", "NATIONAL BANK OF CANADA", 79, {image: productImg("nb.png"), description: "NATIONAL BANK OF CANADA | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+
+
+
+
+  P(111110093, "PAYPAL LOGS",        "PAYPAL_CASHAPP", "PAYPAL LOGS", 7,  {image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(102110093,  "PAYPAL LOGS",      "PAYPAL_CASHAPP", "PAYPAL LOGS", 49, { image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(160110093, "PAYPAL LOGS",      "PAYPAL_CASHAPP", "PAYPAL LOGS", 79, {image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED", badge: "Best value",balance: 1500 }),
+  P(100110093, "PAYPAL LOGS",        "PAYPAL_CASHAPP", "PAYPAL LOGS", 7,  {image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(103110093,  "PAYPAL LOGS",      "PAYPAL_CASHAPP", "PAYPAL LOGS", 49, { image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(161110093, "PAYPAL LOGS",      "PAYPAL_CASHAPP", "PAYPAL LOGS", 79, {image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED", badge: "Best value",balance: 1500 }),
+  P(107110093, "PAYPAL LOGS",        "PAYPAL_CASHAPP", "PAYPAL LOGS", 7,  {image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(198110093,  "PAYPAL LOGS",      "PAYPAL_CASHAPP", "PAYPAL LOGS", 49, { image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED",balance: 1500 }),
+  P(145100093, "PAYPAL LOGS",      "PAYPAL_CASHAPP", "PAYPAL LOGS", 79, {image: productImg("paypal.png"), description: "Chase online hacked logs All balances comes with full ROUTING+ACCOUNT numbers. ZELLE ENABLED", badge: "Best value",balance: 1500 }),
+
+  P(11112006, "CASHAPP LOGS",        "PAYPAL_CASHAPP", "CASHAPP LOGS", 7,  {image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(10212006,  "CASHAPP LOGS",      "PAYPAL_CASHAPP", "CASHAPP LOGS", 49, { image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(16012006, "CASHAPP LOGS",      "PAYPAL_CASHAPP", "CASHAPP LOGS", 79, {image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...", badge: "Best value",balance: 1500 }),
+  P(10012006, "CASHAPP LOGS",        "PAYPAL_CASHAPP", "CASHAPP LOGS", 7,  {image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(10312006,  "CASHAPP LOGS",      "PAYPAL_CASHAPP", "CASHAPP LOGS", 49, { image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(16112006, "CASHAPP LOGS",      "PAYPAL_CASHAPP", "CASHAPP LOGS", 79, {image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...", badge: "Best value",balance: 1500 }),
+  P(10712006, "CASHAPP LOGS",        "PAYPAL_CASHAPP", "CASHAPP LOGS", 7,  {image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(19812006,  "CASHAPP LOGS",      "PAYPAL_CASHAPP", "CASHAPP LOGS", 49, { image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...",balance: 1500 }),
+  P(14512006, "CASHAPP LOGS",      "PAYPAL_CASHAPP", "CASHAPP LOGS", 79, {image: productImg("cashapp.png"), description: "BOA Bank Log ✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅ Cookies ✅Zelle...", badge: "Best value",balance: 1500 }),
+
+  P(111130037, "CASHAPP AGED ACCOUNTS",        "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 7,  {image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(102130037,  "CASHAPP AGED ACCOUNTS",      "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 49, { image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(160130037, "CASHAPP AGED ACCOUNTS",      "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 79, {image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 1500 }),
+  P(100130037, "CASHAPP AGED ACCOUNTS",        "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 7,  {image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(103130037,  "CASHAPP AGED ACCOUNTS",      "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 49, { image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(161130037, "CASHAPP AGED ACCOUNTS",      "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 79, {image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 1500 }),
+  P(107130037, "CASHAPP AGED ACCOUNTS",        "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 7,  {image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(198130037,  "CASHAPP AGED ACCOUNTS",      "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 49, { image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...",balance: 1500 }),
+  P(145130037, "CASHAPP AGED ACCOUNTS",      "PAYPAL_CASHAPP", "CASHAPP AGED ACCOUNTS", 79, {image: productImg("cashapp.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 1500 }),
+
+
+  P(1111600119, "VERIFIED PAYPAL ACCOUNTS",        "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 7,  {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1021800119,  "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 49, { image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(16016002119, "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 79, {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(10016004119, "VERIFIED PAYPAL ACCOUNTS",        "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 7,  {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(10316005119,  "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 49, { image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1611600119, "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 79, {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(1071600119, "VERIFIED PAYPAL ACCOUNTS",        "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 7,  {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1981600119,  "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 49, { image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1451600119, "VERIFIED PAYPAL ACCOUNTS",      "PAYPAL_CASHAPP", "VERIFIED PAYPAL ACCOUNTS", 79, {image: productImg("paypal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
 
   // ---- Gift cards / Gaming ----
   P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gaming-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
