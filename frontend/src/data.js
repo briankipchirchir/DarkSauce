@@ -439,9 +439,9 @@ export const PRODUCTS = [
   P(1001600411927, "ExpressVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("EXPRESS.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   
   // ---- Gift cards / Gaming ----
-  P(23, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 25,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
-  P(24, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 50,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
-  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 100, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),
+  P(23, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(24, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),
 
   // ---- Gift cards / Streaming ----
   P(26, "Streaming gift card $15",          "gift-cards", "streaming", 15, { image: productImg("streaming-15.png"), description: "About one month of streaming.", stock: 100, balance: 15 }),
