@@ -101,11 +101,10 @@ export const CATEGORIES = [
     ],
   },
   {
-    id: "guides", label: "Guides", icon: "book", image: categoryImg("guides.svg"),
+    id: "NETWORK & PRIVACY TOOLS", label: "NETWORK & PRIVACY TOOLS", icon: "book", image: categoryImg("PRIVA.png"),
     subcategories: [
-      { id: "network",  label: "Network security", icon: "shield" },
-      { id: "privacy",  label: "Privacy",          icon: "lock" },
-      { id: "accounts", label: "Account safety",   icon: "book" },
+      { id: "PROXY SERVICES",  label: "PROXY SERVICES", icon: "shield" },
+      { id: "PREMIUM VPNS",  label: "PREMIUM VPNS",          icon: "lock" },
     ],
   },
   {
@@ -425,6 +424,22 @@ export const PRODUCTS = [
   P(16116001192, "Walmart eGift",      "EGIFT CARDS", "EGIFT CARDS", 79, {image: productImg("wal.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
   P(10716001192, "Amazon eGift",        "EGIFT CARDS", "EGIFT CARDS", 7,  {image: productImg("amazon.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(19816001192,  "Visa eGift",      "EGIFT CARDS", "EGIFT CARDS", 49, { image: productImg("visa.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  
+
+
+
+
+    P(111160011926, "Residential Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 7,  {image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(102180011926,  "Local proxy",      "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 49, { image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1601600211926, "Mobile Proxies (4G/5G)",      "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 79, {image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(1001600411926, "Datacenter Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 7,  {image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  
+  
+  P(111160011927, "Surshark",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("SUF.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(102180011927,  "CyberGhost",      "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 49, { image: productImg("CYBER.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1601600211927, "Proton VPN",      "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 79, {image: productImg("PROTON.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(1001600411927, "NordVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("NORD.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
+  P(1001600411927, "ExpressVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("EXPRESS.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   
   // ---- Gift cards / Gaming ----
   P(23, "Gaming gift card $25",             "gift-cards", "gaming", 25,  { image: productImg("gaming-25.png"),  description: "Credit for games and add-ons.", stock: 100, balance: 25 }),
