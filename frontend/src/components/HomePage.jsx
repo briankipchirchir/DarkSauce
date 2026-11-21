@@ -19,7 +19,7 @@ const ADMIN_TELEGRAM = "https://t.me/flowers0890";
 
 // Categories shown as a filterable, paginated table instead of cards.
 // Use the category ids from data.js.
-const TABLE_CATS = ["vegetables", "non-electronic"];
+const TABLE_CATS = ["DUMPS", "NON VBv CCs"];
 
 const usd = (n) => `$${Number(n).toLocaleString("en-US")}`;
 
