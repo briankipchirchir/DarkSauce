@@ -115,13 +115,13 @@ export const CATEGORIES = [
     ],
   },
    {
-    id: "NON VBv CCs", label: "NON VBv CCs", icon: "chip", image: categoryImg("MASTER.png"),
+    id: "NON VBv CCs", label: "NON VBv CCs", icon: "chip", image: categoryImg(""),
     subcategories: [
       { id: "NON VBv CCs", label: "NON VBv CCs", icon: "lock" },
     ],
   },
   {
-    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("MASTER.png"),
+    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg(""),
     subcategories: [
       { id: "USA CLONE CARDS", label: "USA CLONE CARDS", icon: "lock" },
     ],
