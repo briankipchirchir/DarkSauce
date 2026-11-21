@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams, useSearchParams } from "react-rout
 import Icon from "./Icon.jsx";
 import { ProductImage, CategoryIcon } from "./Media.jsx";
 import NotFound from "./NotFound.jsx";
+import ProductTable from "./ProductTable.jsx";
 import { useStore } from "../store.jsx";
 import { ACCEPTED_COINS, CATEGORIES, PRODUCTS } from "../data.js";
 
@@ -15,6 +16,10 @@ const WHY = [
 
 // Your admin's Telegram username (without the @) or a t.me invite link
 const ADMIN_TELEGRAM = "https://t.me/flowers0890";
+
+// Categories shown as a filterable, paginated table instead of cards.
+// Use the category ids from data.js.
+const TABLE_CATS = ["vegetables", "non-electronic"];
 
 const usd = (n) => `$${Number(n).toLocaleString("en-US")}`;
 
@@ -103,8 +108,13 @@ export default function HomePage() {
   const subs = cat?.subcategories || [];
   const showAll = subParam === "all";
   const subObj = subs.find((s) => s.id === subParam) || null;
+
+  // vegetables / non-electronic are shown as a table (with its own type filter)
+  const isTable = Boolean(cat) && TABLE_CATS.includes(cat.id);
+
   // In a category with subcategories, customers choose one first (unless searching).
-  const pickingSub = Boolean(cat) && subs.length > 0 && !subObj && !showAll && !query;
+  // Table categories skip this step because the table has a type filter.
+  const pickingSub = Boolean(cat) && !isTable && subs.length > 0 && !subObj && !showAll && !query;
 
   // opening /products or a category jumps straight to the list
   useEffect(() => {
@@ -251,7 +261,7 @@ export default function HomePage() {
                         </small>
                       </div>
                       <button type="button" className="dx-viewall" onClick={() => navigate(`/category/${c.id}`)}>
-                        View all <Icon name="arrow" size={14} />
+                        {TABLE_CATS.includes(c.id) ? "Open table" : "View all"} <Icon name="arrow" size={14} />
                       </button>
                     </div>
 
@@ -259,7 +269,14 @@ export default function HomePage() {
                       // subcategory cards only: customers open one to see its products
                       <div className="dx-subcards">
                         {csubs.map((s) => (
-                          <SubCard key={s.id} cat={c} sub={s} onOpen={(subId) => openSub(c.id, subId)} />
+                          <SubCard
+                            key={s.id}
+                            cat={c}
+                            sub={s}
+                            onOpen={(subId) =>
+                              TABLE_CATS.includes(c.id) ? navigate(`/category/${c.id}`) : openSub(c.id, subId)
+                            }
+                          />
                         ))}
                       </div>
                     ) : (
@@ -279,7 +296,7 @@ export default function HomePage() {
           <>
             <header>
               <div>
-                {cat && subs.length > 0 && !query && (
+                {cat && !isTable && subs.length > 0 && !query && (
                   <button type="button" className="dx-back" onClick={backToSubs}>
                     <Icon name="arrow" size={14} />All {cat.label.toLowerCase()} types
                   </button>
@@ -292,6 +309,8 @@ export default function HomePage() {
 
             {visible.length === 0 ? (
               <p className="dx-empty">No products match your search. Try a different word or pick another category.</p>
+            ) : isTable ? (
+              <ProductTable products={visible} flash={flash} onAdd={addToCart} />
             ) : (
               <div className="dx-grid">
                 {visible.map((p) => <ProductCard key={p.id} p={p} flash={flash} onAdd={addToCart} />)}

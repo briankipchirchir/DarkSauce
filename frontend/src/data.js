@@ -107,20 +107,26 @@ export const CATEGORIES = [
       { id: "PREMIUM VPNS",  label: "PREMIUM VPNS",          icon: "lock" },
     ],
   },
+
+   {
+    id: "DUMPS", label: "DUMPS", icon: "chip", image: categoryImg("MASTER.png"),
+    subcategories: [
+      { id: "DUMPS", label: "DUMPS", icon: "lock" },
+    ],
+  },
+   {
+    id: "NON VBv CCs", label: "NON VBv CCs", icon: "chip", image: categoryImg("MASTER.png"),
+    subcategories: [
+      { id: "NON VBv CCs", label: "NON VBv CCs", icon: "lock" },
+    ],
+  },
   {
     id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("MASTER.png"),
     subcategories: [
       { id: "USA CLONE CARDS", label: "USA CLONE CARDS", icon: "lock" },
     ],
   },
-  {
-    id: "services", label: "Services", icon: "tool", image: categoryImg("services.svg"),
-    subcategories: [
-      { id: "setup",   label: "Setup and onboarding", icon: "tool" },
-      { id: "audits",  label: "Security audits",      icon: "shield" },
-      { id: "support", label: "Support plans",        icon: "refresh" },
-    ],
-  },
+ 
 ];
 
 // ---------------------------------------------------------------------------
@@ -438,61 +444,45 @@ export const PRODUCTS = [
   P(1001600411927, "NordVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("NORD.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   P(1001600411927, "ExpressVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 7,  {image: productImg("EXPRESS.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
   
+
+
+
+   P(2344, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2444, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(44, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+ P(2344, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2444, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2544, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
+   P(2300, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2400, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2500, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
+   P(2311, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2411, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2511, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
+   P(2377, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2477, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2577, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
+   P(2388, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2488, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2588, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
+   P(2399, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2499, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2599, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
+   P(2366, "DUMPS",             "DUMPS", "DUMPS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
+  P(2466, "DUMPS",             "DUMPS", "DUMPS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
+  P(2566, "DUMPS",            "DUMPS", "DUMPS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
+
   // ---- Gift cards / Gaming ----
   P(23, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 3800,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 25000 }),
   P(24, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 1000,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 5000 }),
-  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),
+  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 2500, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 10000 }),  
 
-  // ---- Gift cards / Streaming ----
-  P(26, "Streaming gift card $15",          "gift-cards", "streaming", 15, { image: productImg("streaming-15.png"), description: "About one month of streaming.", stock: 100, balance: 15 }),
-  P(27, "Streaming gift card $30",          "gift-cards", "streaming", 30, { image: productImg("streaming-30.png"), description: "About two months of streaming.", stock: 100, balance: 30 }),
-  P(28, "Streaming gift card $60",          "gift-cards", "streaming", 60, { image: productImg("streaming-60.png"), description: "About four months of streaming.", stock: 100, balance: 60 }),
 
-  // ---- Guides / Network security ----
-  P(7,  "Home network security guide",      "guides", "network", 12, { image: productImg("network-guide.jpg"), description: "Step-by-step guide to locking down your network.", stock: 999 }),
-  P(29, "Router hardening checklist",       "guides", "network", 6,  { description: "A one-page checklist you can finish in an evening.", stock: 999 }),
-  P(30, "Wi-Fi security for small offices", "guides", "network", 14, { description: "Guest networks, passwords and device rules.", stock: 999 }),
 
-  // ---- Guides / Privacy ----
-  P(8,  "Privacy basics handbook",          "guides", "privacy", 9, { image: productImg("privacy-handbook.jpg"), description: "Plain-language guide to staying private online.", stock: 999 }),
-  P(31, "Browser privacy settings guide",   "guides", "privacy", 7, { description: "The settings worth changing in every major browser.", stock: 999 }),
-  P(32, "Messaging and email privacy guide", "guides", "privacy", 8, { description: "Choosing and configuring private communication.", stock: 999 }),
-
-  // ---- Guides / Account safety ----
-  P(33, "Two-factor authentication guide",  "guides", "accounts", 6, { description: "Set up 2FA on your important accounts.", stock: 999 }),
-  P(34, "Account recovery planning guide",  "guides", "accounts", 7, { description: "Make sure you never get locked out for good.", stock: 999 }),
-  P(35, "Spotting phishing: a practical guide", "guides", "accounts", 9, { description: "Real examples and what to check before you click.", stock: 999 }),
-
-  // ---- Hardware / Security keys ----
-  P(9,  "Hardware security key",            "hardware", "security-keys", 45, { image: productImg("security-key.jpg"), description: "USB security key for two-factor sign-in.", stock: 20 }),
-  P(36, "Security key, USB-C and NFC",      "hardware", "security-keys", 59, { description: "Works with computers and phones.", stock: 20, badge: "New" }),
-  P(37, "Security key 2-pack",              "hardware", "security-keys", 79, { description: "One to use, one safely stored as backup.", stock: 20 }),
-
-  // ---- Hardware / Encrypted storage ----
-  P(10, "Encrypted USB drive 64GB",         "hardware", "storage", 35,  { image: productImg("usb-drive.jpg"), description: "Hardware-encrypted storage with PIN pad.", stock: 15 }),
-  P(38, "Encrypted USB drive 128GB",        "hardware", "storage", 55,  { description: "More room, same PIN-pad protection.", stock: 15 }),
-  P(39, "Encrypted portable SSD 1TB",       "hardware", "storage", 119, { description: "Fast external drive with hardware encryption.", stock: 10 }),
-
-  // ---- Hardware / Network gear ----
-  P(40, "Secure Wi-Fi router, WPA3",        "hardware", "network-gear", 89,  { description: "Modern encryption and automatic updates.", stock: 12 }),
-  P(41, "Hardware firewall appliance",      "hardware", "network-gear", 149, { description: "Small-office firewall with a simple dashboard.", stock: 8 }),
-
-  // ---- Hardware / Accessories ----
-  P(42, "Webcam cover, 3-pack",             "hardware", "accessories", 8,  { description: "Slide covers that fit laptops and monitors.", stock: 200 }),
-  P(43, "Privacy screen filter, 15 inch",   "hardware", "accessories", 25, { description: "Keeps your screen readable only from the front.", stock: 40 }),
-
-  // ---- Services / Setup and onboarding ----
-  P(11, "Setup and onboarding session",     "services", "setup", 60, { image: productImg("onboarding.jpg"), description: "One-to-one session to get you set up.", stock: 10 }),
-  P(44, "Password manager migration help",  "services", "setup", 40, { description: "We move your logins across and clean up duplicates.", stock: 10 }),
-  P(45, "Device hardening session",         "services", "setup", 75, { description: "We secure one computer or phone with you, live.", stock: 10 }),
-
-  // ---- Services / Security audits ----
-  P(12, "Account security review",          "services", "audits", 80,  { image: productImg("security-review.jpg"), description: "We check your accounts and send a written report.", stock: 10 }),
-  P(46, "Home network audit",               "services", "audits", 120, { description: "We review your router, devices and settings.", stock: 8 }),
-  P(47, "Small business security audit",    "services", "audits", 250, { description: "A full review with a prioritised action plan.", stock: 5 }),
-
-  // ---- Services / Support plans ----
-  P(48, "Monthly support plan",             "services", "support", 30, { description: "Email support for security questions, one month.", stock: 25 }),
-  P(49, "Priority support, 3 months",       "services", "support", 90, { description: "Faster replies and one video call per month.", stock: 15 }),
-  P(50, "Account recovery assistance",      "services", "support", 55, { description: "Help working through locked-out account recovery.", stock: 10 }),
 ];
