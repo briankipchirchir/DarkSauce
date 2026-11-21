@@ -109,7 +109,7 @@ export const CATEGORIES = [
   },
 
    {
-    id: "DUMPS", label: "DUMPS", icon: "chip", image: categoryImg("MASTER.png"),
+    id: "DUMPS", label: "DUMPS", icon: "chip", image: categoryImg(""),
     subcategories: [
       { id: "DUMPS", label: "DUMPS", icon: "lock" },
     ],
@@ -121,7 +121,7 @@ export const CATEGORIES = [
     ],
   },
   {
-    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg(""),
+    id: "CLONE CARDS", label: "CLONE CARDS", icon: "chip", image: categoryImg("MASTER.png"),
     subcategories: [
       { id: "USA CLONE CARDS", label: "USA CLONE CARDS", icon: "lock" },
     ],
