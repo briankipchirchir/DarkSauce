@@ -432,10 +432,10 @@ export const PRODUCTS = [
 
 
 
-    P(111160011926, "Residential Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 45,  {image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 45 }),
-  P(102180011926,  "Local proxy",      "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 45, { image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 45 }),
-  P(1601600211926, "Mobile Proxies (4G/5G)",      "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 55, {image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 55 }),
-  P(1001600411926, "Datacenter Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 55,  {image: productImg("RESIDE.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 55 }),
+    P(111160011926, "Residential Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 45,  {image: productImg("RESIDE.png"), description: "Available Locations: 🌍 Worldwide (Rotating IP Pool) : Real residential IPs for maximum trust. Perf..." }),
+  P(102180011926,  "Local proxy",      "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 45, { image: productImg("RESIDE.png"), description: "Premium Residential Proxies with Unlimited Bandwidth,web access control and load balancing ," }),
+  P(1601600211926, "Mobile Proxies (4G/5G)",      "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 55, {image: productImg("RESIDE.png"), description: "Available Locations: 🇬🇧 UK • 🇺🇸 USA • 🇨🇦 Canada : Carrier-based IPs with highest trust score. Ideal...", badge: "Best value" }),
+  P(1001600411926, "Datacenter Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 55,  {image: productImg("RESIDE.png"), description: "Available Locations: 🇺🇸 USA • 🇬🇧 UK • 🇩🇪 Germany • 🇫🇷 France : Fast and affordable proxies for auto..."}),
   
   
   P(111160011927, "Surshark",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 45,  {image: productImg("SUF.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 45 }),
