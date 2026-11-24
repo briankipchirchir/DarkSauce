@@ -514,9 +514,9 @@ export const PRODUCTS = [
   P(25661, "NON VBv CCs",            "NON VBv CCs", "NON VBv CCs", 70, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 4681 }),  
 
   // ---- Gift cards / Gaming ----
-  P(23, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 1500,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 11, balance: 10726 }),
-  P(24, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 2200,  { image: productImg("MASTER.png"),  description: "Credit for games and add-ons.", stock: 1, balance: 11699 }),
-  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 3549, { image: productImg("MASTER.png"), description: "Credit for games and add-ons.", stock: 2, balance: 12990 }),  
+  P(23, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 1500,  { image: productImg("MASTER.png"),  description: "Cardholder Name (Clone name) , Card Number (PAN), Expiration Date (Copy from original), CVV/CVC CODE...",  balance: 10726 }),
+  P(24, "USA CLONE CARDS",             "CLONE CARDS", "USA CLONE CARDS", 2200,  { image: productImg("MASTER.png"),  description: "Cardholder Name (Clone name) , Card Number (PAN), Expiration Date (Copy from original), CVV/CVC CODE...",  balance: 11699 }),
+  P(25, "USA CLONE CARDS",            "CLONE CARDS", "USA CLONE CARDS", 3549, { image: productImg("MASTER.png"), description: "Cardholder Name (Clone name) , Card Number (PAN), Expiration Date (Copy from original), CVV/CVC CODE...", balance: 12990 }),  
 
 
 
