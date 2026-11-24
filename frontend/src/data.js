@@ -438,11 +438,11 @@ export const PRODUCTS = [
   P(1001600411926, "Datacenter Proxies",        "NETWORK & PRIVACY TOOLS", "PROXY SERVICES", 55,  {image: productImg("RESIDE.png"), description: "Available Locations: 🇺🇸 USA • 🇬🇧 UK • 🇩🇪 Germany • 🇫🇷 France : Fast and affordable proxies for auto..."}),
   
   
-  P(111160011927, "Surshark",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 45,  {image: productImg("SUF.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 45 }),
-  P(102180011927,  "CyberGhost",      "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 45, { image: productImg("CYBER.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 45 }),
-  P(1601600211927, "Proton VPN",      "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 49, {image: productImg("PROTON.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 149 }),
-  P(1001600411927, "NordVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 55,  {image: productImg("NORD.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 55 }),
-  P(1001600411927, "ExpressVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 65,  {image: productImg("EXPRESS.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 65 }),
+  P(111160011927, "Surshark",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 45,  {image: productImg("SUF.png"), description: "✅ Affordable VPN with unlimited device connections, strong security features, and great value for m..."}),
+  P(102180011927,  "CyberGhost",      "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 45, { image: productImg("CYBER.png"), description: "✅ User-friendly VPN with optimized servers for streaming and torrenting, plus a large global server..." }),
+  P(1601600211927, "Proton VPN",      "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 49, {image: productImg("PROTON.png"), description: "✅ Privacy-focused VPN from Switzerland with strong encryption, no-logs policy, and a free plan avai...", badge: "Best value" }),
+  P(1001600411927, "NordVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 55,  {image: productImg("NORD.png"), description: "🔐 Premium Subscription ✅ Full access to high-speed VPN servers, secure encryption, global location..." }),
+  P(1001600411927, "ExpressVPN",        "NETWORK & PRIVACY TOOLS", "PREMIUM VPNS", 65,  {image: productImg("EXPRESS.png"), description: "✅ Ultra-fast premium VPN with top-tier security, strong no-logs policy, and reliable performance fo..." }),
   
 
 
