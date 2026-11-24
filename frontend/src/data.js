@@ -222,15 +222,15 @@ export const PRODUCTS = [
   P(14513, "HUNTINGTON BANK",      "USA BANK LOGS", "HUNTINGTON BANK", 1000, {image: productImg("huni.png"), description: "Huntington, User + Online Email Access + Owner's Cookies User ID : Yes Password: Yes E-mail: Yes Sta...", badge: "Best value",balance: 26625 }),
 
 
-  P(11116, "PNC BANK",        "USA BANK LOGS", "PNC BANK", 7,  {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
-  P(10218,  "PNC BANK",      "USA BANK LOGS", "PNC BANK", 49, { image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
-  P(16016, "PNC BANK",      "USA BANK LOGS", "PNC BANK", 79, {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
-  P(10016, "PNC BANK",        "USA BANK LOGS", "PNC BANK", 7,  {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
-  P(10316,  "PNC BANK",      "USA BANK LOGS", "PNC BANK", 49, { image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
-  P(16116, "PNC BANK",      "USA BANK LOGS", "PNC BANK", 79, {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
-  P(10716, "PNC BANK",        "USA BANK LOGS", "PNC BANK", 7,  {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
-  P(19816,  "PNC BANK",      "USA BANK LOGS", "PNC BANK", 49, { image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1500 }),
-  P(14516, "PNC BANK",      "USA BANK LOGS", "PNC BANK", 79, {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 1500 }),
+  P(11116, "PNC BANK",        "USA BANK LOGS", "PNC BANK", 65,  {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 1250 }),
+  P(10218,  "PNC BANK",      "USA BANK LOGS", "PNC BANK", 85, { image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 2050 }),
+  P(16016, "PNC BANK",      "USA BANK LOGS", "PNC BANK", 100, {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 3200 }),
+  P(10016, "PNC BANK",        "USA BANK LOGS", "PNC BANK", 150,  {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 5203 }),
+  P(10316,  "PNC BANK",      "USA BANK LOGS", "PNC BANK", 250, { image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 6124 }),
+  P(16116, "PNC BANK",      "USA BANK LOGS", "PNC BANK", 300, {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 10606 }),
+  P(10716, "PNC BANK",        "USA BANK LOGS", "PNC BANK", 470,  {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 8650 }),
+  P(19816,  "PNC BANK",      "USA BANK LOGS", "PNC BANK", 530, { image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,",balance: 9500 }),
+  P(14516, "PNC BANK",      "USA BANK LOGS", "PNC BANK", 600, {image: productImg("pnc.png"), description: "PNC BANK | Fullz: Email + Pass, DOB, Address, Account No, Routing, Debit Card No + Exp + CVV, IP,", badge: "Best value",balance: 11200 }),
 
 
   P(11117, "USAA BANK",        "USA BANK LOGS", "USAA BANK", 7,  {image: productImg("usa.png"), description: "USAA✅Online access (Log details) ✅Card details (Debit) ✅Email Access ✅Cookies ✅Zelle",balance: 1500 }),
